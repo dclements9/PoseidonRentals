@@ -1,2 +1,11 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<%= flash[:alert] if flash[:alert] %>
+
+<h1> Enter Username & Password to Log In: </h1>
+<br><br><br>
+
+<%= form_tag('/login') do %>
+    Username: <%= text_field_tag :username %> <br>
+    Password: <%= password_field_tag :password %> <br><br>
+
+    <%= submit_tag 'Log In' %>
+<% end %>
