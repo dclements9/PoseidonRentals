@@ -8,8 +8,7 @@
 
 <%= form_for(@user) do |u| %>
     Email: <%= u.text_field :email %><br><br><br>
-    First Name: <%= u.text_field :first_name %><br><br>
-    Last Name: <%= u.text_field :last_name %><br><br><br>
+    Name: <%= u.text_field :name %><br><br>
     Password: <%= u.password_field :password %><br><br>
     Confirm Password: <%= u.password_field :password_confirmation %> <br><br>
     <br><br>
