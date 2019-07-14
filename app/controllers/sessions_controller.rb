@@ -18,7 +18,8 @@ class SessionsController < ApplicationController
     end
   end
 
-  def github_create
+  def oauth_create
+    
     @user = User.find_or_create_by(email: oauth[:info][:email]) do |u|
       u.name = oauth[:info][:name]
       u.email = oauth[:info][:email]
@@ -26,7 +27,7 @@ class SessionsController < ApplicationController
       u.image = oauth[:info][:image]
     end
     session[:user_id] = @user.id
-   
+
     redirect_to @user
   end
 
