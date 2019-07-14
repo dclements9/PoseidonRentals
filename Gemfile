@@ -3,6 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.2'
 
+# Thin server
+gem 'thin'
+# Omniauth
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'dotenv-rails'
 # bcrypt
 gem 'bcrypt'
 # Pry

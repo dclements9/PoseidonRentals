@@ -4,14 +4,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:username])
-
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect_to @user
+    if auth_hash = request.env["omniauth.auth"]
+      #logged in with OAUTH
+      raise auth_hash.inspect
     else
-      flash[:alert] = "Invalid Credentials. Please Try Again."
-      redirect_to login_path
+      @user = User.find_by(username: params[:username])
+
+      if @user && @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+        redirect_to @user
+      else
+        flash[:alert] = "Invalid Credentials. Please Try Again."
+        redirect_to login_path
+      end
     end
   end
 
