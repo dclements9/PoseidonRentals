@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_13_180912) do
+ActiveRecord::Schema.define(version: 2019_07_14_155525) do
 
   create_table "equipment", force: :cascade do |t|
     t.string "name"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_07_13_180912) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
+    t.string "email"
     t.string "first_name"
     t.string "last_name"
     t.string "password_digest"
