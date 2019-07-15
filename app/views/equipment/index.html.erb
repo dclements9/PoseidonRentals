@@ -1,0 +1,8 @@
+<h1> All Equipment: </h1><br><br>
+
+<% @equipment.each do |e| %>
+<h2><%= link_to e.name, equipment_path(e) %><br></h2>
+<h3>Category:<%= e.category %><br></h3>
+<h3>Cost:    <%= e.cost %>/hr<br></h3>
+<br><br><br>
+<% end %>

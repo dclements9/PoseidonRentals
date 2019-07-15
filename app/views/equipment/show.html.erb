@@ -1,0 +1,13 @@
+<h1>Name:    <%= @equipment.name %><br></h1>
+
+<h3> Category:<%= @equipment.category %><br> </h3>
+
+<h3> Cost:    <%= @equipment.cost %>/hr<br> </h3>
+
+<h2> Available: <%= @equipment.available ? "Yes" : "No" %><br>
+
+<br><br><br>
+
+
+<br>
+<%= link_to 'Back to All Equipment', equipment_index_path %>

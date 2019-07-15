@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+boat = Equipment.create(name: "Boat", category: "Vehicle", available: true, cost: 500)
+scuba_gear = Equipment.create(name: "Scuba Gear", category:"Gear", available: true, cost: 50)
+snorkel = Equipment.create(name: "Snorkel", category: "Gear", available: false, cost: 20)
+kayak = Equipment.create(name: "Kayak", category: "Vehicle", available: false, cost: 100)
+canoe = Equipment.create(name: "Canoe", category: "Vehicle", available: true, cost: 200)
