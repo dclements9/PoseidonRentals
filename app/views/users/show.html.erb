@@ -3,7 +3,7 @@ Welcome to the inside <%= @user.name %>!
 
 Your Reservations:
 <% @user.reservations.each do |r|%>
-    <%= link_to "#{r.date}, #{r.start_time} to #{r.end_time}", reservation_path(r) %><br>
+    <%= link_to "#{r.date.strftime("%b %-d, %Y")}, #{r.start_time.strftime("%-l:%M%P")} to #{r.end_time.strftime("%-l:%M%P")}", reservation_path(r) %><br>
 <% end %>
 <br><br>
 

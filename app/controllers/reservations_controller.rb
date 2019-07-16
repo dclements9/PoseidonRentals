@@ -7,7 +7,6 @@ class ReservationsController < ApplicationController
     end
 
     def create
-        
         @reservation = Reservation.new(reservation_params)
         @reservation.user_id = session[:user_id]
         @reservation.equipment_id  = params[:equipment][:id]

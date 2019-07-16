@@ -1,6 +1,8 @@
-<h1> Your Reservation for <%= @reservation.date %>: <br><br> </h1>
+<h1> Your Reservation for <%= @reservation.date.strftime("%b %-d, %Y") %>: <br><br> </h1>
 
 <h2> Equipment: <%= @equipment.name%> <br> </h2>
 <h3> Cost: <%= @equipment.cost %> <br><br> </h3>
-Pickup Time: <%= @reservation.start_time %><br>
-Return Time: <%= @reservation.end_time%>
+
+
+Pickup Time: <%= @reservation.start_time.strftime("%-l:%M%P") %><br>
+Return Time: <%= @reservation.end_time.strftime("%-l:%M%P") %>
