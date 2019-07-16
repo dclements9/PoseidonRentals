@@ -2,11 +2,13 @@
 
 <%= form_for @reservation do |r| %>
 
-Select Equipment: <%= collection_select(:equipment, :id, Equipment.all, :id, :name) %><br>
+Select Equipment: <%= collection_select(:equipment, :id, Equipment.all, :id, :name, include_blank: 'Select Equipment') %><br>
 (Then fill with cost)
 <br><br>
-Date Here (With validations & prefill for format)<br>
-Time Here (With validations & prefill for format)<br><br><br>
+Date: <%= r.date_field :date %><br>
+Pickup Time: <%= r.time_field :start_time %><br>
+Return Time: <%= r.time_field :end_time %>
+<br><br><br>
 
     <%= r.submit 'Create Reservation' %><br><br>
 <% end %>
