@@ -3,6 +3,6 @@
 <% @equipment.each do |e| %>
 <h2><%= link_to e.name, equipment_path(e) %><br></h2>
 <h3>Category:<%= e.category %><br></h3>
-<h3>Cost:    <%= e.cost %>/hr<br></h3>
+<h3>Cost:    <%= number_to_currency(e.cost) %>/hr<br></h3>
 <br><br><br>
 <% end %>
