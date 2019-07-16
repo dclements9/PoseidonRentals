@@ -1,9 +1,13 @@
 Welcome to the inside <%= @user.name %>!
 <br><br><br>
 
-View our equipment: <%= link_to 'All Equipment', equipment_index_path %><br>
+Your Reservations:
+<% @user.reservations.each do |r|%>
+    <%= link_to "#{r.date}, #{r.start_time} to #{r.end_time}", reservation_path(r) %><br>
+<% end %>
+<br><br>
 
-TODO: Need to show all Users' Reservations on this page for edit link to route to
+View our equipment: <%= link_to 'All Equipment', equipment_index_path %><br>
 
 Edit a Reservation: <%= link_to 'Reserve Equipment', edit_reservation_path %><br>
 Create a Reservation: <%= link_to 'Reserve Equipment', new_reservation_path %><br><br><br>
