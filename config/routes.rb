@@ -6,13 +6,10 @@ Rails.application.routes.draw do
   resources :equipment do
     resources :reservations
   end
-  
-  resources :reservations, except: [:create]
+
+  resources :reservations
   resources :users
   resources :sessions, except: [:new, :create]
-
-  post '/create_reservation' => 'reservations#create'
-
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

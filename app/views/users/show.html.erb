@@ -1,5 +1,11 @@
 Welcome to the inside <%= @user.name %>!
 <br><br><br>
 
-View our equipment: <%= link_to 'All Equipment', equipment_index_path %>
+View our equipment: <%= link_to 'All Equipment', equipment_index_path %><br>
+
+TODO: Need to show all Users' Reservations on this page for edit link to route to
+
+Edit a Reservation: <%= link_to 'Reserve Equipment', edit_reservation_path %><br>
+Create a Reservation: <%= link_to 'Reserve Equipment', new_reservation_path %><br><br><br>
+
 <%= link_to 'Log Out', logout_path, method: :delete %>

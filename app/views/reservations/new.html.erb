@@ -1,10 +1,17 @@
-<h1> Create Reservation: </h1>
+<h1> Create Reservation: </h1><br><br>
 
-<h2> <%= @equipment.name %> </h2>
-<%= @equipment.cost %>
+<%= form_for @reservation do |r| %>
 
-Date Here
-Time Here
+Select Equipment: <%= collection_select(:equipment, :id, Equipment.all, :id, :name) %><br>
+(Then fill with cost)
+<br><br>
+Date Here (With validations & prefill for format)<br>
+Time Here (With validations & prefill for format)<br><br><br>
+
+    <%= r.submit 'Create Reservation' %><br><br>
+<% end %>
 
 
-<%= link_to 'Back to All Equipment', equipment_index_path %>
+
+<%= link_to 'To All Equipment', equipment_index_path %><br>
+<%= link_to 'Home', user_path(@user) %>
