@@ -6,3 +6,6 @@
 
 Pickup Time: <%= @reservation.start_time.strftime("%-l:%M%P") %><br>
 Return Time: <%= @reservation.end_time.strftime("%-l:%M%P") %>
+<br><br>
+
+<%= link_to 'Edit Reservation', edit_reservation_path %>

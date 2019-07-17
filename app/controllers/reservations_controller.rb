@@ -24,7 +24,18 @@ class ReservationsController < ApplicationController
     end
 
     def edit
+        
         @reservation = Reservation.find(params[:id])
+        @user = User.find(session[:user_id])
+        @equipment = Equipment.find(@reservation.equipment_id) 
+    end
+
+    def update
+        @reservation = Reservation.find(params[:id])
+        @reservation.equipment_id = params[:equipment][:id]
+        @reservation.update(reservation_params)
+        
+        redirect_to reservation_path(@reservation)
     end
 
     def destroy
@@ -33,6 +44,6 @@ class ReservationsController < ApplicationController
     private
 
     def reservation_params
-        params.require(:reservation).permit(:date, :start_time, :end_time)
+        params.require(:reservation).permit(:date, :start_time, :end_time, :equipment_id)
     end
 end
