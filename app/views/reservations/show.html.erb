@@ -1,11 +1,11 @@
-<h1> Your Reservation for <%= @reservation.date.strftime("%b %-d, %Y") %>: <br><br> </h1>
+<h1> Your Reservation for <%= reservation_date(@reservation) %>: <br><br> </h1>
 
 <h2> Equipment: <%= @equipment.name%> <br> </h2>
-<h3> Cost: <%= number_to_currency(@equipment.cost) %> <br><br> </h3>
+<h3> Cost: <%= equipment_currency(@equipment.cost) %> <br><br> </h3>
 
 
-Pickup Time: <%= @reservation.start_time.strftime("%-l:%M%P") %><br>
-Return Time: <%= @reservation.end_time.strftime("%-l:%M%P") %>
+Pickup Time: <%= reservation_start(@reservation) %><br>
+Return Time: <%= reservation_end(@reservation) %>
 <br><br>
 
 <%= link_to 'Edit Reservation', edit_reservation_path %>

@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
         @reservation = Reservation.new(reservation_params)
         @reservation.user_id = session[:user_id]
         @reservation.equipment_id  = params[:equipment][:id]
-
+        
         if @reservation.save
             redirect_to reservation_path(@reservation)
         else
@@ -24,7 +24,6 @@ class ReservationsController < ApplicationController
     end
 
     def edit
-        
         @reservation = Reservation.find(params[:id])
         @user = User.find(session[:user_id])
         @equipment = Equipment.find(@reservation.equipment_id) 

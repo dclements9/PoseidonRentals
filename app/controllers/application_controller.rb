@@ -1,2 +1,20 @@
 class ApplicationController < ActionController::Base
+    helper_method :reservation_date, :reservation_start, :reservation_end, :equipment_currency
+
+    def reservation_date(reservation)
+        Reservation.date(reservation)
+    end
+
+    def reservation_start(reservation)
+        Reservation.start_time(reservation)
+    end
+
+    def reservation_end(reservation)
+        Reservation.end_time(reservation)
+    end
+
+    def equipment_currency(cost)
+        binding.pry
+        Equipment.cost_currency(cost)
+    end
 end
