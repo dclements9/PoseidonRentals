@@ -2,8 +2,9 @@
 
 <%= form_for @reservation do |r| %>
 
-Select Equipment: <%= collection_select(:equipment, :id, Equipment.all, :id, :name, include_blank: 'Select Equipment')%><br>
+Select from Available Equipment: <%= collection_select(:equipment, :id, Equipment.available, :id, :name, include_blank: 'Select Equipment')%><br>
 (Then fill with cost)
+
 
 
 
