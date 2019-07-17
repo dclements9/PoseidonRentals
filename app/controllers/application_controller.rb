@@ -12,9 +12,4 @@ class ApplicationController < ActionController::Base
     def reservation_end(reservation)
         Reservation.end_time(reservation)
     end
-
-    def equipment_currency(cost)
-        binding.pry
-        Equipment.cost_currency(cost)
-    end
 end

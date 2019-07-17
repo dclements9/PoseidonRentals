@@ -1,15 +1,17 @@
 class ReservationsController < ApplicationController
+    before_action :find_reservation, only: [:update, :edit, :show]
+    before_action :find_user, only: [:edit, :new]
+    before_action :set_equipment_id, only: [:update, :create]
 
     def new
         @reservation = Reservation.new
         @equipment = Equipment.find(params[:equipment_id]) if params[:equipment_id]
-        @user = User.find(session[:user_id])
+        
     end
 
     def create
         @reservation = Reservation.new(reservation_params)
         @reservation.user_id = session[:user_id]
-        @reservation.equipment_id  = params[:equipment][:id]
         
         if @reservation.save
             redirect_to reservation_path(@reservation)
@@ -19,19 +21,15 @@ class ReservationsController < ApplicationController
     end
 
     def show
-        @reservation = Reservation.find(params[:id])
         @equipment = Equipment.find(@reservation.equipment_id) if @reservation.equipment_id
     end
 
     def edit
-        @reservation = Reservation.find(params[:id])
-        @user = User.find(session[:user_id])
+        
         @equipment = Equipment.find(@reservation.equipment_id) 
     end
 
     def update
-        @reservation = Reservation.find(params[:id])
-        @reservation.equipment_id = params[:equipment][:id]
         @reservation.update(reservation_params)
         
         redirect_to reservation_path(@reservation)
@@ -44,5 +42,17 @@ class ReservationsController < ApplicationController
 
     def reservation_params
         params.require(:reservation).permit(:date, :start_time, :end_time, :equipment_id)
+    end
+
+    def find_reservation
+        @reservation = Reservation.find(params[:id])
+    end
+
+    def find_user
+        @user = User.find(session[:user_id])
+    end
+
+    def set_equipment_id
+        @reservation.equipment_id = params[:equipment][:id]
     end
 end
