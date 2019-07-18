@@ -7,4 +7,6 @@ class EquipmentController < ApplicationController
     def show
         @equipment = Equipment.find(params[:id])
     end
+
+    
 end
