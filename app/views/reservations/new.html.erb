@@ -1,3 +1,9 @@
+<% if @reservation.errors.full_messages.any? %>
+  <% @reservation.errors.full_messages.each do |error| %>
+    <%= error %> <br>
+  <% end %>
+<% end %>
+
 <h1> Create Reservation: </h1><br><br>
 
 <%= form_for @reservation do |r| %>
@@ -20,4 +26,5 @@ Return Time: <%= r.time_field :end_time %>
 
 
 <%= link_to 'To All Equipment', equipment_index_path %><br>
-<%= link_to 'Home', user_path(@user) %>
+
+<%= link_to 'Home', root_path %>

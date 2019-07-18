@@ -1,12 +1,10 @@
 class ReservationsController < ApplicationController
     before_action :find_reservation, only: [:update, :edit, :show]
     before_action :find_user, only: [:edit, :new]
-    before_action :set_equipment_id, only: [:update, :create]
+    before_action :set_equipment_id, only: [:new, :create]
 
     def new
-        @reservation = Reservation.new
-        @equipment = Equipment.find(params[:equipment_id]) if params[:equipment_id]
-        
+        @reservation = Reservation.new      
     end
 
     def create
@@ -25,11 +23,11 @@ class ReservationsController < ApplicationController
     end
 
     def edit
-        
         @equipment = Equipment.find(@reservation.equipment_id) 
     end
 
     def update
+        @equipment = Equipment.find(params[:equipment_id])
         @reservation.update(reservation_params)
         
         redirect_to reservation_path(@reservation)
@@ -53,6 +51,6 @@ class ReservationsController < ApplicationController
     end
 
     def set_equipment_id
-        @reservation.equipment_id = params[:equipment][:id]
+        @equipment = Equipment.find(params[:equipment_id]) if params[:equipment_id]
     end
 end
