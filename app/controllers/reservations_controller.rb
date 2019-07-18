@@ -10,8 +10,8 @@ class ReservationsController < ApplicationController
     def create
         @reservation = Reservation.new(reservation_params)
         @reservation.user_id = session[:user_id]
-        @reservation.equipment_id = Equipment.find(params[:equipment][:id]).id if params[:equipment][:id]
-
+        @reservation.equipment_id = Equipment.find(params[:equipment][:id]).id if !params[:equipment][:id].empty?
+        
         if @reservation.save
             redirect_to reservation_path(@reservation)
         else
