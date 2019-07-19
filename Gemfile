@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.2'
 
+# bootstrap
+gem 'bootstrap-sass'
 # Omniauth
 gem 'omniauth'
 gem 'omniauth-github'
