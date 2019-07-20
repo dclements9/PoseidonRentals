@@ -11,11 +11,9 @@ class ReservationsController < ApplicationController
     def create
         @reservation = Reservation.new(reservation_params)
         @reservation.user = current_user
-        binding.pry
-        @reservation.equipment = Equipment.find(params[:equipment][:id]).id if !params[:equipment][:id].empty?
+        @reservation.equipment = Equipment.find(params[:equipment][:id]) if !params[:equipment][:id].empty?
         
         if @reservation.save
-            #binding.pry
             redirect_to reservation_path(@reservation)
         else
             render :new

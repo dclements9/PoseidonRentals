@@ -2,7 +2,8 @@ class SessionsController < ApplicationController
   
   def home
     if !session[:user_id].nil?
-      @user = User.find(session[:user_id])
+      find_user
+
       redirect_to user_path(@user)
     end
   end
