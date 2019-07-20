@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
     before_action :find_reservation, only: [:update, :edit, :show]
     before_action :find_user, only: [:edit, :new]
+    before_action :is_owner?, only: [:show, :edit, :destroy]
 
     def new
         @reservation = Reservation.new   
@@ -20,7 +21,7 @@ class ReservationsController < ApplicationController
     end
 
     def show
-       @equipment = @reservation.equipment if @reservation.equipment
+        @equipment = @reservation.equipment if @reservation.equipment
     end
 
     def edit
@@ -35,6 +36,10 @@ class ReservationsController < ApplicationController
     end
 
     def destroy
+        @reservation.find(params[:id])
+        @reservation.destroy
+        
+        redirect_to root_path
     end
 
     private
@@ -49,5 +54,11 @@ class ReservationsController < ApplicationController
 
     def find_user
         @user = User.find(session[:user_id])
+    end
+
+    def is_owner?
+        if @reservation.user_id != session[:user_id]
+            redirect_to root_path
+        end
     end
 end
