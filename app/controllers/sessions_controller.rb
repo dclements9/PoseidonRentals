@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
 
     if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
+      current_user
       redirect_to @user
     else
       flash[:alert] = "Invalid Credentials. Please Try Again."
@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
       u.password = SecureRandom.hex
       u.image = oauth[:info][:image]
     end
-    session[:user_id] = @user.id
+    set_current_user
 
     redirect_to @user
   end

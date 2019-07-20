@@ -10,10 +10,12 @@ class ReservationsController < ApplicationController
 
     def create
         @reservation = Reservation.new(reservation_params)
-        @reservation.user_id = session[:user_id]
-        @reservation.equipment_id = Equipment.find(params[:equipment][:id]).id if !params[:equipment][:id].empty?
+        @reservation.user = current_user
+        binding.pry
+        @reservation.equipment = Equipment.find(params[:equipment][:id]).id if !params[:equipment][:id].empty?
         
         if @reservation.save
+            #binding.pry
             redirect_to reservation_path(@reservation)
         else
             render :new
@@ -50,12 +52,7 @@ class ReservationsController < ApplicationController
         @reservation = Reservation.find(params[:id])
     end
 
-    def find_user
-        @user = User.find(session[:user_id])
-    end
-
     def is_owner?
-        
         if @reservation.user_id != session[:user_id]
             redirect_to root_path
         end

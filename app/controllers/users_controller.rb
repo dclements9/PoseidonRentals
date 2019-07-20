@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
 
         if @user.save
-            session[:user_id] = @user.id
+            set_current_user
             redirect_to @user
         else
             render :new
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
     def show
         if !session[:user_id].nil?
-            @user = User.find(params[:id])
+            find_user
         else
             redirect_to root_path
         end

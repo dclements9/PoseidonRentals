@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-    helper_method :reservation_date, :reservation_start, :reservation_end, :equipment_currency, :current_user
+    helper_method :reservation_date, :reservation_start, :reservation_end, :equipment_currency, :current_user, :find_user, :set_current_user
+    
 
     def reservation_date(reservation)
         Reservation.date(reservation)
@@ -13,7 +14,15 @@ class ApplicationController < ActionController::Base
         Reservation.end_time(reservation)
     end
 
+    def find_user
+        @user = User.find(session[:user_id])
+    end
+
     def current_user
         @current_user ||= User.find(session[:user_id])
+    end
+
+    def set_current_user
+        session[:user_id] = @user.id
     end
 end
