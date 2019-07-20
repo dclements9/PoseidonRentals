@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
@@ -18,7 +19,7 @@ class SessionsController < ApplicationController
       redirect_to @user
     else
       flash[:alert] = "Invalid Credentials. Please Try Again."
-      redirect_to login_path
+      render :new
     end
   end
 

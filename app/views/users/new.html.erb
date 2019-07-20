@@ -7,6 +7,7 @@
 <h1>Create a New User: </h1><br>
 
 <%= form_for(@user) do |u| %>
+
     Email: <%= u.text_field :email %><br><br><br>
     Name: <%= u.text_field :name %><br><br>
     Password: <%= u.password_field :password %><br><br>
