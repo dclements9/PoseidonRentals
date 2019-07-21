@@ -11,3 +11,6 @@ scuba_gear = Equipment.create(name: "Scuba Gear", category:"Gear", available: tr
 snorkel = Equipment.create(name: "Snorkel", category: "Gear", available: false, cost: 20)
 kayak = Equipment.create(name: "Kayak", category: "Vehicle", available: false, cost: 100)
 canoe = Equipment.create(name: "Canoe", category: "Vehicle", available: true, cost: 200)
+
+test_user = User.create(email: "testing@testing.com", name: "testing", password: "testing")
+admin_test_user = User.create(email: "admin@admin.com", name: "admin", password: "admin", admin: true)

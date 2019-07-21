@@ -30,7 +30,6 @@ class SessionsController < ApplicationController
       u.name = oauth[:info][:name]
       u.email = oauth[:info][:email]
       u.password = SecureRandom.hex
-      u.image = oauth[:info][:image]
     end
     set_current_user
 
