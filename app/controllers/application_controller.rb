@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+    helper_method :reservation_date, :reservation_start, :reservation_end, :current_user, :set_current_user, :find_user, :logged_in?
+
     def reservation_date(reservation)
         Reservation.date(reservation)
     end
@@ -11,15 +13,19 @@ class ApplicationController < ActionController::Base
         Reservation.end_time(reservation)
     end
 
-    def find_user_if_
-        redirect_to root_path unless @user = User.find(session[:user_id])
+    def find_user
+        @user = User.find(session[:user_id])
     end
 
     def current_user
-        @current_user ||= User.find(session[:user_id])
+        @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
     def set_current_user
         session[:user_id] = @user.id
     end
+    
+    def logged_in?
+        current_user != nil
+    end 
 end

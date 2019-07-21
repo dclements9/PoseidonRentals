@@ -1,11 +1,17 @@
 class ReservationsController < ApplicationController
     before_action :find_reservation, only: [:update, :edit, :show, :destroy]
-    before_action :find_user, only: [:edit, :new]
+    before_action :find_user, only: [:edit]
     before_action :is_owner?, only: [:show, :edit, :destroy]
 
     def new
-        @reservation = Reservation.new   
-        @equipment = Equipment.find(params[:equipment_id]) if params[:equipment_id]
+    
+        if logged_in?
+            find_user 
+            @reservation = Reservation.new   
+            @equipment = Equipment.find(params[:equipment_id]) if params[:equipment_id]
+        else
+            redirect_to root_path
+        end
     end
 
     def create

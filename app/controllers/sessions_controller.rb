@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   
   def home
-    if !session[:user_id].nil?
+    if logged_in?
       find_user
 
       redirect_to user_path(@user)
@@ -14,9 +14,9 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:email])
-
+    
     if @user && @user.authenticate(params[:password])
-      current_user
+      set_current_user
       redirect_to @user
     else
       flash[:alert] = "Invalid Credentials. Please Try Again."

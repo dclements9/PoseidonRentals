@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        if !session[:user_id].nil?
+        if logged_in?
             find_user
             @sorted_reservations = Reservation.sort_reservation(@user.reservations)
         else

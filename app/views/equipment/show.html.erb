@@ -16,4 +16,6 @@
 
 
 <br><br>
-<%= link_to 'Back to All Equipment', equipment_index_path %>
+<%= link_to 'Back to All Equipment', equipment_index_path %><br>
+
+<%= link_to 'Edit Equipment', edit_equipment_path unless !current_user.admin? %>
