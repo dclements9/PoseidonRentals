@@ -3,9 +3,6 @@
 <%= form_for @reservation do |r| %>
 
 Select Equipment: <%= collection_select(:equipment, :id, Equipment.all {|e| [e.name, e.cost]}, :id, :name, include_blank: 'Select Equipment')%><br>
-(Then fill with cost)
-
-
 
 <br><br>
 Date: <%= r.date_field :date %><br>
@@ -15,8 +12,6 @@ Return Time: <%= r.time_field :end_time %>
 
     <%= r.submit 'Update Reservation' %><br><br>
 <% end %>
-
-
 
 <%= link_to 'To All Equipment', equipment_index_path %><br>
 <%= link_to 'Home', root_path %>

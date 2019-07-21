@@ -4,18 +4,19 @@
 
 <h3> Cost:    <%= @equipment.cost %>/hr<br> </h3>
 
-<h2> Available: <%= @equipment.available ? "Yes" : "No" %><br>
+<h3> Available: <%= @equipment.available ? "Yes" : "No" %><br> </h3>
 
 <br><br><br>
 
 <% if @equipment.available %>
-    <%= link_to 'Reserve Equipment', new_equipment_reservation_path(@equipment)%>
+<h4>    <%= link_to 'Reserve Equipment', new_equipment_reservation_path(@equipment)%></h4>
 <% else %>
-    Equipment Unavailable at this time.
+<h4>    Equipment Unavailable at this time.</h4>
 <% end %>
 
-
+<h4> <%= link_to 'Edit Equipment', edit_equipment_path unless !current_user.admin? %></h4>
 <br><br>
-<%= link_to 'Back to All Equipment', equipment_index_path %><br>
+<h4> <%= link_to 'Back to All Equipment', equipment_index_path %><br></h4>
 
-<%= link_to 'Edit Equipment', edit_equipment_path unless !current_user.admin? %>
+
+

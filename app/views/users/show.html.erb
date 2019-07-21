@@ -4,12 +4,15 @@
 <h3>Your Reservations:<br></h3>
 
 <% @sorted_reservations.each do |r|%>
-    <%= link_to "#{reservation_date(r)}, #{reservation_start(r)} to #{reservation_end(r)}", reservation_path(r) %><br>
+<h4>    <%= link_to "#{reservation_date(r)}, #{reservation_start(r)} to #{reservation_end(r)}", reservation_path(r) %><br></h4>
 <% end %>
 <br><br>
 
-View our equipment: <%= link_to 'All Equipment', equipment_index_path %><br>
+<h4>View our equipment: <%= link_to 'All Equipment', equipment_index_path %><br></h4>
 
-Create a Reservation: <%= link_to 'Reserve Equipment', new_reservation_path %><br><br><br>
+<h4>Add Equipment: <%= link_to 'New Equipment', new_equipment_path unless !current_user.admin? %><br></h4>
 
-<%= link_to 'Log Out', logout_path, method: :delete %>
+<h4>Create a Reservation: <%= link_to 'Reserve Equipment', new_reservation_path %><br><br><br></h4>
+
+<h4><%= link_to 'Log Out', logout_path, method: :delete %></h4>
+

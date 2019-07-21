@@ -1,4 +1,10 @@
-<h1> Edit Equipment: </h1><br><br>
+<% if @equipment.errors.full_messages.any? %>
+  <% @equipment.errors.full_messages.each do |error| %>
+    <%= error %> <br>
+  <% end %>
+<% end %>
+
+<h1> Add Equipment: </h1><br><br>
 
 <%= form_for @equipment do |e| %>
     Name: <%= e.text_field :name %><br><br>
@@ -7,7 +13,7 @@
     Available: <%= e.check_box :available %><br><br>
     Cost: <%= e.number_field :cost %>/hr<br><br><br>
     
-    <%= e.submit 'Edit Equipment' %><br><br>
+    <%= e.submit 'Add Equipment' %><br><br>
 <% end %>
 
 

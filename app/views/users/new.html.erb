@@ -8,11 +8,11 @@
 
 <%= form_for(@user) do |u| %>
 
-    Email: <%= u.text_field :email %><br><br><br>
-    Name: <%= u.text_field :name %><br><br>
-    Password: <%= u.password_field :password %><br><br>
-    Confirm Password: <%= u.password_field :password_confirmation %> <br><br>
+    <h4>Email: <%= u.text_field :email %><br><br><br> </h4>
+    <h4>Name: <%= u.text_field :name %><br><br></h4>
+    <h4>Password: <%= u.password_field :password %><br><br></h4>
+    <h4>Confirm Password: <%= u.password_field :password_confirmation %> <br><br></h4>
     <br><br>
 
-    <%= u.submit 'Sign Up' %>
+    <h4><%= u.submit 'Sign Up' %></h4>
 <% end %>
