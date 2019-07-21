@@ -9,7 +9,6 @@ gem 'bootstrap-sass'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'dotenv-rails'
-gem 'omniauth-google-oauth2'
 gem 'thin'
 # bcrypt
 gem 'bcrypt'
