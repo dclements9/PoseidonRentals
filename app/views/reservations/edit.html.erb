@@ -1,17 +1,3 @@
 <h1> Edit Reservation: </h1><br><br>
 
-<%= form_for @reservation do |r| %>
-
-Select Equipment: <%= collection_select(:equipment, :id, Equipment.all {|e| [e.name, e.cost]}, :id, :name, include_blank: 'Select Equipment')%><br>
-
-<br><br>
-Date: <%= r.date_field :date %><br>
-Pickup Time: <%= r.time_field :start_time %><br>
-Return Time: <%= r.time_field :end_time %>
-<br><br><br>
-
-    <%= r.submit 'Update Reservation' %><br><br>
-<% end %>
-
-<%= link_to 'To All Equipment', equipment_index_path %><br>
-<%= link_to 'Home', root_path %>
+<%= render 'reservation_form' %>

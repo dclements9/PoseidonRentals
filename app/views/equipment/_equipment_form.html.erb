@@ -1,0 +1,14 @@
+<%= form_for @equipment do |e| %>
+    Name: <%= e.text_field :name %><br><br>
+    Category: <%= e.text_field :category %><br><br>
+
+    Available: <%= e.check_box :available %><br><br>
+    Cost: <%= e.number_field :cost %>/hr<br><br><br>
+    
+    <%= e.submit 'Submit' %><br><br>
+<% end %>
+
+
+
+<%= link_to 'To All Equipment', equipment_index_path %><br>
+<%= link_to 'Home', root_path %>
