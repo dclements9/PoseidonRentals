@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :reservations
   end
 
+  scope '/admin' do
+    resources :equipment, only: [:edit, :delete]
+  end
+  
   resources :reservations
   resources :users
   resources :sessions, except: [:new, :create]
