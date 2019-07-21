@@ -30,4 +30,8 @@ class Reservation < ApplicationRecord
             errors.add(:date, "and start time cannot be in the past")
         end
     end
+
+    def self.sort_reservation(reservations)
+        reservations.sort_by{|r| [r.date, r.start_time.strftime("%H:%M")]}
+    end
 end

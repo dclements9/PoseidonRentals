@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     def show
         if !session[:user_id].nil?
             find_user
+            @sorted_reservations = Reservation.sort_reservation(@user.reservations)
         else
             redirect_to root_path
         end
