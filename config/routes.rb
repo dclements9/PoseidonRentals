@@ -6,10 +6,6 @@ Rails.application.routes.draw do
   resources :equipment do
     resources :reservations
   end
-
-  scope '/admin' do
-    resources :equipment, only: [:edit, :delete]
-  end
   
   resources :reservations
   resources :users

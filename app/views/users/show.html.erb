@@ -1,3 +1,5 @@
+
+
 <h1> Welcome to Poseidon Rentals <%= @user.name %>! </h1>
 <br><br><br>
 
@@ -8,11 +10,11 @@
 <% end %>
 <br><br>
 
-<h4>View our equipment: <%= link_to 'All Equipment', equipment_index_path %><br></h4>
+<h4><%= link_to 'View Our Equipment', equipment_index_path %><br></h4>
 
-<h4>Add Equipment: <%= link_to 'New Equipment', new_equipment_path unless !current_user.admin? %><br></h4>
+<h4><%= link_to 'Add Equipment', new_equipment_path unless !current_user.admin? %><br></h4>
 
-<h4>Create a Reservation: <%= link_to 'Reserve Equipment', new_reservation_path %><br><br><br></h4>
+<h4><%= link_to 'Create A Reservation', new_reservation_path %><br><br><br></h4>
 
 <h4><%= link_to 'Log Out', logout_path, method: :delete %></h4>
 

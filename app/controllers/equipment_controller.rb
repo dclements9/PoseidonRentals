@@ -1,6 +1,6 @@
 class EquipmentController < ApplicationController
     before_action :is_admin?, only: [:edit, :update, :new, :create, :destroy]
-    before_action :find_equipment, only: [:update, :edit, :show, :destroy]
+    before_action :find_equipment, only: [:update, :edit, :destroy, :show]
     
     def index
         @equipment = Equipment.all

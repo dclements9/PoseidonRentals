@@ -2,7 +2,7 @@
 
 <h3> Category:<%= @equipment.category %><br> </h3>
 
-<h3> Cost:    <%= @equipment.cost %>/hr<br> </h3>
+<h3> Cost:    <%= number_to_currency(@equipment.cost) %>/hr<br> </h3>
 
 <h3> Available: <%= @equipment.available ? "Yes" : "No" %><br> </h3>
 
