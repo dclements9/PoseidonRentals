@@ -18,7 +18,7 @@ rails db:create && rails db:migrate
 ```
 Optional: 
     If you would like to seed sample data run:
-    ```ruby
+```ruby
     rails db:seed
 ```
 Sample data includes:
