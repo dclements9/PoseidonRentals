@@ -1,4 +1,4 @@
-<%= form_for @reservation do |r| %>
+<%= form_for(reservation) do |r| %>
 
 Select from Available Equipment: <%= collection_select(:equipment, :id, Equipment.available, :id, :name_cost, include_blank: 'Select Equipment')%><br>
 

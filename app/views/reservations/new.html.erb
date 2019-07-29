@@ -5,4 +5,4 @@
 <% end %>
 
 <h1> Create Reservation: </h1><br><br>
-<%= render 'reservation_form' %>
+<%= render partial: "reservation_form", locals: {reservation: @reservation} %>
