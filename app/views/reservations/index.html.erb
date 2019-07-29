@@ -1,0 +1,10 @@
+<h2> Reservations: </h2><br><br>
+
+<% @reservations.each do |r| %>
+    <h3> Date: <%= reservation_date(r) %> </h3> <br>
+    <h3> Start Time: <%= reservation_start(r) %> </h3> <br>
+    <h3> End Time: <%= reservation_end(r)%> </h3> <br>
+    <br><br>
+<% end %>
+
+<h3> <%= "No Reservations currently exist." if @reservations.empty? %> </h3>

@@ -41,6 +41,16 @@ class ReservationsController < ApplicationController
         redirect_to reservation_path(@reservation)
     end
 
+    def index
+        
+        if !params[:equipment_id].nil?
+            @equipment = Equipment.find(params[:equipment_id]) 
+            @reservations = @equipment.reservations
+        else 
+            @reservations = Reservation.all
+        end
+    end
+
     def destroy
         @reservation.destroy
         redirect_to root_path
