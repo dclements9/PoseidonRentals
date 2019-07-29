@@ -1,8 +1,4 @@
-<% if @equipment.errors.full_messages.any? %>
-  <% @equipment.errors.full_messages.each do |error| %>
-    <%= error %> <br>
-  <% end %>
-<% end %>
+<%= render partial: "layouts/error_messages", locals: {object: @equipment} %>
 
 <h1> Add Equipment: </h1><br><br>
 

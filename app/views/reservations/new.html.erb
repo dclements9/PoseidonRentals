@@ -1,8 +1,4 @@
-<% if @reservation.errors.full_messages.any? %>
-  <% @reservation.errors.full_messages.each do |error| %>
-    <%= error %> <br>
-  <% end %>
-<% end %>
+<%= render partial: "layouts/error_messages", locals: {object: @reservation} %>
 
 <h1> Create Reservation: </h1><br><br>
 <%= render partial: "reservation_form", locals: {reservation: @reservation} %>
