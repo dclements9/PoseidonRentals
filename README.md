@@ -7,7 +7,7 @@ A user is then able to reserve equipment for a date & time. A user can also edit
 Admins are able to add, edit, and delete equipment.
 
 ## Installation
-Ruby 2.6.2 is required.
+**Ruby 2.6.2 is required.**
 
 To get started, run the following commands:
 ```ruby
@@ -16,12 +16,13 @@ bundle install
 ```ruby
 rails db:create && rails db:migrate
 ```
-Optional: 
+_Optional:_ 
     If you would like to seed sample data run:
 ```ruby
-    rails db:seed
+rails db:seed
 ```
 Sample data includes:
+
     1. 5 Equipment objects
     2. 1 User Object (email: testing@testing.com password: testing)
     3. 1 User Admin Object (email: admin@admin.com password: admin)
@@ -38,7 +39,7 @@ During testing, to change a user to an admin, run:
 ```ruby
 current_user.update_attribute :admin, true
 ```
-current_user can be replaced with any user.
+**current_user** can be replaced with any user.
 
 ## Development
 
