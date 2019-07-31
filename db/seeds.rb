@@ -14,3 +14,4 @@ canoe = Equipment.create(name: "Canoe", category: "Vehicle", available: true, co
 
 test_user = User.create(email: "testing@testing.com", name: "testing", password: "testing")
 admin_test_user = User.create(email: "admin@admin.com", name: "admin", password: "admin", admin: true)
+admin_boat_reservation = Reservation.create(user_id: 2, equipment_id: 1, date: "2019-08-31", start_time: "2000-01-01 08:00:00", end_time: "2000-01-01 23:00:00")

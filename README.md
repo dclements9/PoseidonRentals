@@ -22,10 +22,10 @@ Optional:
     rails db:seed
 ```
 Sample data includes:
-    - 5 Equipment objects
-    - 1 User Object (email: testing@testing.com password: testing)
-    - 1 User Admin Object (email: admin@admin.com password: admin)
-
+    1. 5 Equipment objects
+    2. 1 User Object (email: testing@testing.com password: testing)
+    3. 1 User Admin Object (email: admin@admin.com password: admin)
+    4. 1 Reservation object for Admin & Boat
 ```ruby
 thin start --ssl
 ```
