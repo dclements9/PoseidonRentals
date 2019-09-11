@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.2'
 
+gem 'active_model_serializers'
 # bootstrap
 gem 'bootstrap-sass'
 # Omniauth
