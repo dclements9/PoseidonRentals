@@ -3,17 +3,17 @@
 <h1> Welcome to Poseidon Rentals <%= @user.name %>! </h1>
 <br><br><br>
 
-<h3>Your Reservations:<br></h3>
+
+<h3>Your Reservations: </h3>
+<div id="user-reservations">
+    Invoke function that: Fetchs Reservations and display if belongs_to user
+</div>
+<br>
 
 <% @sorted_reservations.each do |r|%>
 <h4>    <%= link_to "#{reservation_date(r)}, #{reservation_start(r)} to #{reservation_end(r)}", reservation_path(r) %><br></h4>
 <% end %>
 <br><br>
-
-<div id="test-id">
-    <p> This is a test... </p>
-    <button id="test-button"> Test Button </button>
-</div>
 
 <h4><%= link_to 'View Our Equipment', equipment_index_path %><br></h4>
 
