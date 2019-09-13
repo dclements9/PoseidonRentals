@@ -1,3 +1,3 @@
 class ReservationSerializer < ActiveModel::Serializer
-  attributes :id, :date, :start_time, :end_time
+  attributes :id, :user_id, :date, :start_time, :end_time
 end

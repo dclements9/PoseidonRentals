@@ -1,13 +1,15 @@
-
-function listenForShowReservationsClick() {
-    $('button#user-reservations').on('click', function(e){
-        event.preventDefault()
-        getReservations()
-    })
-}
+// Make Reservation a JS object
 
 function getReservations(){
-    
+    let reservationsDiv = document.getElementById('user-reservations');
+    fetch('http://localhost:3000/reservations.json')
+    .then(resp => resp.json())
+    .then(reservations => {
+        reservationsDiv.innerHTML += "Success";
+        
+        debugger;
+    })
+
 }
 
 class Reservation {
@@ -20,10 +22,6 @@ class Reservation {
         this.end_time = reservation.end_time
     }
 }
-
-
-
-
 
 function displayReservationForm(){
     let reservationForm = document.getElementById('reservation-form');
