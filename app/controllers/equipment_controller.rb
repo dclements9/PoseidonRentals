@@ -4,6 +4,10 @@ class EquipmentController < ApplicationController
     
     def index
         @equipment = Equipment.all
+        respond_to do |format|
+            format.html
+            format.json {render json: @equipment}
+        end
     end
 
     def show

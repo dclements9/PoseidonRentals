@@ -10,13 +10,24 @@
 <% end %>
 <br><br>
 
+<div id="test-id">
+    <p> This is a test... </p>
+    <button id="test-button"> Test Button </button>
+</div>
+
 <h4><%= link_to 'View Our Equipment', equipment_index_path %><br></h4>
 
 <h4><%= link_to 'Add Equipment', new_equipment_path unless !current_user.admin? %><br></h4>
 
 <h4><%= link_to 'All Reservations', reservations_path unless !current_user.admin? %><br></h4>
 
+<%# Below: Button to render JS Create new Reservation %>
 <h4><%= link_to 'Create A Reservation', new_reservation_path %><br><br><br></h4>
 
+<div id="reservation-form">
+    <p> Reservation form test </p>
+</div>
+<button id="reservation-form-button" onclick="displayReservationForm(); return false;"> Create a New Reservation </button>
+<a href="#" onclick="displayReservationForm(); return false;"> Create A Reservation </a>
 <h4><%= link_to 'Log Out', logout_path, method: :delete %></h4>
 
