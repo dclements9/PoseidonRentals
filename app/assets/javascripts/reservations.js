@@ -6,8 +6,9 @@ function getReservations(){
     .then(resp => resp.json())
     .then(reservations => {
         reservationsDiv.innerHTML += "Success";
-        
-        debugger;
+        let testReservation = new Reservation(reservations[0])
+
+        reservationsDiv.innerHTML = testReservation.displayReservations();
     })
 
 }
@@ -20,6 +21,15 @@ class Reservation {
         this.date = reservation.date
         this.start_time = reservation.start_time
         this.end_time = reservation.end_time
+    }
+
+    displayReservations(){
+        return(`
+        <div>
+            <h3> ${this.date}</h3>
+            <p> ${this.start_time} </p>
+        </div>
+        `)
     }
 }
 
