@@ -24,14 +24,19 @@ class Reservation {
         this.start_time = reservation.start_time
         this.end_time = reservation.end_time
         this.equipment = reservation.equipment
-        debugger;
+        
     }
 
     displayReservation(){
         // If this.user_id == session[:user_id] - Access @user or session hash
+
+        // Converts Ruby Date Type to formatted string time.
+        var dateParts = this.date.split('-');
+        var formatDate = new Date (dateParts[0], (dateParts[1] - 1), dateParts[2])
+        
         return(`
         <div>
-            <h3> ${this.date.date}</h3>
+            <h3> ${formatDate.toDateString()}</h3>
             <p> ${this.start_time} </p>
             <p> ${this.equipment.name} </p>
         </div>
