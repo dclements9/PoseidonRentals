@@ -1,4 +1,3 @@
-// Make Reservation a JS object
 
 function getReservations(){
     let reservationsDiv = document.getElementById('user-reservations');
@@ -6,11 +5,14 @@ function getReservations(){
     .then(resp => resp.json())
     .then(reservations => {
         reservationsDiv.innerHTML += "Success";
-        let testReservation = new Reservation(reservations[0])
 
-        reservationsDiv.innerHTML = testReservation.displayReservations();
+        for (var i = 0, len = reservations.length; i < len; ++i) {
+            
+            var objReservation = new Reservation(reservations[i]);
+            reservationsDiv.innerHTML += objReservation.displayReservation();
+            
+        }
     })
-
 }
 
 class Reservation {
@@ -21,13 +23,17 @@ class Reservation {
         this.date = reservation.date
         this.start_time = reservation.start_time
         this.end_time = reservation.end_time
+        this.equipment = reservation.equipment
+        debugger;
     }
 
-    displayReservations(){
+    displayReservation(){
+        // If this.user_id == session[:user_id] - Access @user or session hash
         return(`
         <div>
-            <h3> ${this.date}</h3>
+            <h3> ${this.date.date}</h3>
             <p> ${this.start_time} </p>
+            <p> ${this.equipment.name} </p>
         </div>
         `)
     }
