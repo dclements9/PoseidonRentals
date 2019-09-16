@@ -53,13 +53,22 @@ class Reservation {
 }
 
 function displayReservationForm(){
+    // TODO: Dropdown for equipment
     let reservationForm = document.getElementById('reservation-form');
     let form = `
         <form onsubmit="createReservation(); return false;">
-        <label> Test </label>
-        <input type="time">
+        <label> Date: </label>
+        <input type="date">
+        <br>
+        <label> Start Time: </label>
+        <input id="start_time" type="time">
+        <br>
+        <label> End Time: </label>
+        <input id="end_time" type="time">
+        <br><br>
         <input type="submit" value="Create Reservation">
         </form>
+        <br><br>
     `
     reservationForm.innerHTML = form;
 }
