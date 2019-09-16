@@ -11,7 +11,7 @@
 <br>
 
 <button id="user-reservations" onclick="getReservations()"> Show Your Reservations </button> 
-<br>
+<br><br>
 <a href="#" onclick="getReservations(); return false;"> Show The Reservations </a><br>
 
 <% @sorted_reservations.each do |r|%>
@@ -25,7 +25,6 @@
 
 <h4><%= link_to 'All Reservations', reservations_path unless !current_user.admin? %><br></h4>
 
-<%# Below: Button to render JS Create new Reservation %>
 <h4><%= link_to 'Create A Reservation', new_reservation_path %><br><br><br></h4>
 
 <div id="reservation-form">
@@ -33,6 +32,7 @@
 </div>
  
 <button id="reservation-form-button" onclick="displayReservationForm(); return false;"> Create a New Reservation </button>
+<br><br>
 <a href="#" onclick="displayReservationForm(); return false;"> Create A Reservation </a>
 <h4><%= link_to 'Log Out', logout_path, method: :delete %></h4>
 
