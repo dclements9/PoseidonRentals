@@ -4,6 +4,7 @@ function getReservations(){
     fetch('http://localhost:3000/reservations.json')
     .then(resp => resp.json())
     .then(reservations => {
+        //Test Success Message
         reservationsDiv.innerHTML += "Success";
 
         for (var i = 0, len = reservations.length; i < len; ++i) {
@@ -30,14 +31,21 @@ class Reservation {
     displayReservation(){
         // If this.user_id == session[:user_id] - Access @user or session hash
 
-        // Converts Ruby Date Type to formatted string time.
+        // Converts Ruby Date Type to formatted string date.
         var dateParts = this.date.split('-');
         var formatDate = new Date (dateParts[0], (dateParts[1] - 1), dateParts[2])
         
+        //Converts Ruby Date (Time) Type to formatted string time.
+        //Still needs proper converstion of timezone. 
+        
+        var formatStart_time = (new Date(this.start_time)).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+        var formatEnd_time = (new Date(this.end_time)).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
         return(`
         <div>
             <h3> ${formatDate.toDateString()}</h3>
-            <p> ${this.start_time} </p>
+            <p> ${formatStart_time} to ${formatEnd_time}</p>
             <p> ${this.equipment.name} </p>
         </div>
         `)
