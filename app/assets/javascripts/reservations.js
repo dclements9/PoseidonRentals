@@ -42,19 +42,34 @@ class Reservation {
 
         var formatEnd_time = (new Date(this.end_time)).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         
+
+        // TODO: href onClick is getting automatically clicked
         return(`
         <div>
             <h3> ${formatDate.toDateString()}</h3>
             <p> ${formatStart_time} to ${formatEnd_time}</p>
-            <p> ${this.equipment.name} </p>
-            
-            <a href="http://localhost:3000/reservations/${this.id}" > More Info</a>
+            <a href="#" onclick="${this.showMoreInfo()} return false;"> More Info </a>
         </div>
-        
         `)
     }
     showMoreInfo(){
-        // Fetch this.id reservation information
+        let reservationInfoDiv = document.getElementById('user-reservations')
+        let url = 'http://localhost:3000/reservations/' + this.id + '.json'
+
+        fetch(url)
+        .then(resp => resp.json())
+        .then(info => {
+        let reservationInfo = `
+            <h1>Your Reservation for ${info.date}: </h1>
+            
+            <h2> Equipment: ${info.equipment.name} </h2>
+            <h3> Cost: ${info.equipment.cost} </h3>
+
+            <p>Pickup Time: </p>
+            <p>Return Time: </p>
+            `
+            reservationInfoDiv.innerHTML = reservationInfo
+        })
     }
 }
 

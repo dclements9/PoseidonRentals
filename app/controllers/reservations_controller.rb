@@ -28,6 +28,10 @@ class ReservationsController < ApplicationController
 
     def show
         @equipment = @reservation.equipment if @reservation.equipment
+        respond_to do |format|
+            format.html
+            format.json {render json: @reservation}
+        end
     end
 
     def edit
