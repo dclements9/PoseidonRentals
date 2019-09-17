@@ -41,19 +41,25 @@ class Reservation {
         var formatStart_time = (new Date(this.start_time)).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 
         var formatEnd_time = (new Date(this.end_time)).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-
+        
         return(`
         <div>
             <h3> ${formatDate.toDateString()}</h3>
             <p> ${formatStart_time} to ${formatEnd_time}</p>
             <p> ${this.equipment.name} </p>
+            
+            <a href="http://localhost:3000/reservations/${this.id}" > More Info</a>
         </div>
+        
         `)
+    }
+    showMoreInfo(){
+        // Fetch this.id reservation information
     }
 }
 
 function displayReservationForm(){
-    // TODO: Dropdown for equipment
+    // Dropdown for equipment
     displayEquipmentDropDown()
     let reservationForm = document.getElementById('reservation-form');
     let form = `
