@@ -54,6 +54,7 @@ class Reservation {
 
 function displayReservationForm(){
     // TODO: Dropdown for equipment
+    displayEquipmentDropDown()
     let reservationForm = document.getElementById('reservation-form');
     let form = `
         <form onsubmit="createReservation(); return false;">
@@ -71,4 +72,36 @@ function displayReservationForm(){
         <br><br>
     `
     reservationForm.innerHTML = form;
+}
+
+function displayEquipmentDropDown(){
+    let dropdown = document.getElementById('equipment-select');
+    dropdown.length = 0;
+
+    let defaultOption = document.createElement('option');
+    defaultOption.text = 'Choose Equipment';
+
+    dropdown.add(defaultOption);
+    
+    dropdown.selectedIndex = 0;
+    
+    const url = 'http://localhost:3000/equipment.json';
+
+    fetch(url)  
+    .then(  
+        function(response) {   
+        response.json().then(function(data) {  
+            let option;
+        
+            for (let i = 0; i < data.length; i++) {
+            option = document.createElement('option');
+            option.text = data[i].name;
+            dropdown.add(option);
+            }    
+        });  
+        }  
+    )  
+    .catch(function(err) {  
+        console.error('Fetch Error -', err);  
+  });
 }
