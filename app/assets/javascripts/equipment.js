@@ -1,17 +1,17 @@
 function getEquipmentReservations(){
     let reservationsDiv = document.getElementById('equipment-reservations');
     
-    // Need equipment ID for below code.
     let url = window.location.href + ".json"
     
     fetch(url)
     .then(resp => resp.json())
     .then(info => {
+        debugger;
         info.reservations.forEach(function(reservation){
             var objReservation = new Reservation(reservation);
             reservationsDiv.innerHTML += objReservation.displayReservation();
             
-            // TODO: Displays Non Working ShowMoreInfo link
+            // TODO: Fix - Displays Non Working ShowMoreInfo link
         })
     })
 }

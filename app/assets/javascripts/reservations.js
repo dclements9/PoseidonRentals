@@ -74,13 +74,13 @@ class Reservation {
 }
 
 function displayReservationForm(){
-    // Dropdown for equipment
     displayEquipmentDropDown()
+
     let reservationForm = document.getElementById('reservation-form');
     let form = `
         <form onsubmit="createReservation(); return false;">
         <label> Date: </label>
-        <input type="date">
+        <input id="date" type="date">
         <br>
         <label> Start Time: </label>
         <input id="start_time" type="time">
@@ -117,6 +117,7 @@ function displayEquipmentDropDown(){
             for (let i = 0; i < data.length; i++) {
             option = document.createElement('option');
             option.text = data[i].name;
+            option.value = data[i].id
             dropdown.add(option);
             }    
         });  
@@ -125,4 +126,30 @@ function displayEquipmentDropDown(){
     .catch(function(err) {  
         console.error('Fetch Error -', err);  
   });
+}
+
+function createReservation(){
+    
+    const reservation = {
+        // TODO: fetch user_id
+        user_id: 1,
+        equipment_id: document.getElementById('equipment-select').value,
+        date: document.getElementById('date').value,
+        start_time: document.getElementById('start_time').value,
+        end_time: document.getElementById('end_time').value
+    }
+    
+    fetch('http://localhost:3000/reservations', {
+        method: 'POST',
+        body: JSON.stringify({reservation}),
+        headers:{
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    }).then(resp => resp.json())
+    .then(reservation => {
+        debugger;
+        // displayReservation()
+    })
+
 }
