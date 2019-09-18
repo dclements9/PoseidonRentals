@@ -131,21 +131,19 @@ function displayEquipmentDropDown(){
 function createReservation(){
     
     const reservation = {
-        // TODO: fetch user_id
-        user_id: 1,
         equipment_id: document.getElementById('equipment-select').value,
         date: document.getElementById('date').value,
         start_time: document.getElementById('start_time').value,
         end_time: document.getElementById('end_time').value
     }
     
-    fetch('http://localhost:3000/reservations', {
+    fetch("http://localhost:3000/reservations", {
         method: 'POST',
-        body: JSON.stringify({reservation}),
         headers:{
             'Content-Type': 'application/json',
             'Accept': 'application/json'
-        }
+        },
+        body: JSON.stringify({reservation})
     }).then(resp => resp.json())
     .then(reservation => {
         debugger;

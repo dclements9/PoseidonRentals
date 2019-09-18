@@ -2,6 +2,7 @@ class ReservationsController < ApplicationController
     before_action :find_reservation, only: [:update, :edit, :show, :destroy]
     before_action :find_user, only: [:edit]
     before_action :is_owner?, only: [:show, :edit, :destroy]
+    skip_before_action :verify_authenticity_token
 
     def new
     
@@ -17,12 +18,14 @@ class ReservationsController < ApplicationController
     def create
         @reservation = Reservation.new(reservation_params)
         @reservation.user = current_user
-        @reservation.equipment = Equipment.find(params[:equipment][:id]) if !params[:equipment][:id].empty?
+        # @reservation.equipment = Equipment.find(params[:equipment][:id]) if !params[:equipment][:id].empty?
         
         if @reservation.save
-            redirect_to reservation_path(@reservation)
+            # redirect_to reservation_path(@reservation)
+            render json: @reservation, status: 201
         else
-            render :new
+            # render :new
+            render json: { errors: @reservation.errors.full_messages}, status: :bad_request
         end
     end
 
