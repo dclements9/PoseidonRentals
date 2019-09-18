@@ -11,6 +11,10 @@ class EquipmentController < ApplicationController
     end
 
     def show
+        respond_to do |format|
+            format.html
+            format.json {render json: @equipment}
+        end
     end
 
     def edit

@@ -1,8 +1,9 @@
 function getEquipmentReservations(){
     let reservationsDiv = document.getElementById('equipment-reservations');
+    
     // Need equipment ID for below code.
-    let url = 'http://localhost:3000/equipment/' + this.id + '.json'
-
+    let url = window.location.href + ".json"
+    
     fetch(url)
     .then(resp => resp.json())
     .then(info => {
