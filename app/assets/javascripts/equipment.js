@@ -7,8 +7,12 @@ function getEquipmentReservations(){
     fetch(url)
     .then(resp => resp.json())
     .then(info => {
-        debugger;
-
+        info.reservations.forEach(function(reservation){
+            var objReservation = new Reservation(reservation);
+            reservationsDiv.innerHTML += objReservation.displayReservation();
+            
+            // TODO: Displays Non Working ShowMoreInfo link
+        })
     })
 }
 

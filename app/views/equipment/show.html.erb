@@ -6,7 +6,15 @@
 
 <h3> Available: <%= @equipment.available ? "Yes" : "No" %><br> </h3>
 
-<br><br><br>
+<br><br>
+
+<%# Shows equipment's reservations %>
+<div id="equipment-reservations">
+</div>
+<br>
+<button id="equipment-reservations-button" onclick="getEquipmentReservations()"> All Reservations for this Equipment </button> 
+
+<br><br>
 
 <% if @equipment.available %>
 <h4>    <%= link_to 'Reserve Equipment', new_equipment_reservation_path(@equipment)%></h4>
@@ -18,13 +26,6 @@
 <h4> <%= link_to 'Delete Equipment', equipment_path(@equipment), method: :delete, data: { confirm: "Delete #{@equipment.name}" } unless !current_user.admin? %></h4>
 <br><br>
 
-<%# Shows equipment's reservations %>
-<div id="equipment-reservations">
-</div>
-<button id="equipment-reservations-button" onclick="getEquipmentReservations()"> All Reservations for this Equipment </button> 
-
-
-<h4> <%= link_to 'All Reservations for this Equipment', equipment_reservations_path(@equipment) %> </h4> <br><br>
 <h4> <%= link_to 'Back to All Equipment', equipment_index_path %><br></h4>
 
 
