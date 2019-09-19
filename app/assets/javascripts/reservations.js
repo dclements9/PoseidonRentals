@@ -146,8 +146,11 @@ function createReservation(){
         body: JSON.stringify({reservation})
     }).then(resp => resp.json())
     .then(reservation => {
+        var objReservation = new Reservation(reservation)
+        objReservation.equipment_id = reservation.equipment.id
+        objReservation.displayReservation()
+        //Does not display pickup/return time
         debugger;
-        // displayReservation()
     })
 
 }
