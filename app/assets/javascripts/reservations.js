@@ -1,4 +1,6 @@
-
+// window.onload = function(){
+//     getReservations();
+// };
 function getReservations(){
     let reservationsDiv = document.getElementById('user-reservations');
     fetch('http://localhost:3000/reservations.json')
@@ -42,17 +44,32 @@ class Reservation {
 
         var formatEnd_time = (new Date(this.end_time)).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         
-
+        var thisReservation = this
+        
         // TODO: href onClick is getting automatically clicked
-        return(`
-        <div>
+        // return(`
+        // <div>
+        //     <h3> ${formatDate.toDateString()}</h3>
+        //     <p> ${formatStart_time} to ${formatEnd_time}</p>
+            
+        //     <button onclick="testShowMoreInfo(${thisReservation})">Show More Info</button>
+        //     </div>
+        // `)
+        let reservations = (`
+            <div>
             <h3> ${formatDate.toDateString()}</h3>
-            <p> ${formatStart_time} to ${formatEnd_time}</p>
-            <a href="#" onclick="${this.showMoreInfo()} return false;"> More Info </a>
-        </div>
-        `)
+            <p> ${formatStart_time} to ${formatEnd_time}</p>`
+           
+            + "<button onclick= "testShowMoreInfo(${thisReservation})" >Show More Info</button>"
+
+        + '</div>'
+        )
+        
+        return reservations
     }
+
     showMoreInfo(){
+        debugger;
         let reservationInfoDiv = document.getElementById('user-reservations')
         let url = 'http://localhost:3000/reservations/' + this.id + '.json'
 
@@ -71,6 +88,14 @@ class Reservation {
             reservationInfoDiv.innerHTML = reservationInfo
         })
     }
+}
+// Just a test
+function testShowMoreInfo(reservation){
+    debugger;
+    let reservationInfoDiv = document.getElementById('user-reservations')
+
+    reservationInfoDiv.innerHTML = "This is a test."
+
 }
 
 function displayReservationForm(){
@@ -148,9 +173,8 @@ function createReservation(){
     .then(reservation => {
         var objReservation = new Reservation(reservation)
         objReservation.equipment_id = reservation.equipment.id
-        objReservation.displayReservation()
-        //Does not display pickup/return time
         debugger;
+        objReservation.displayReservation()
     })
 
 }

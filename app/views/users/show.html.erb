@@ -1,3 +1,6 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
 
 
 <h1> Welcome to Poseidon Rentals <%= @user.name %>! </h1>
@@ -9,11 +12,17 @@
 <div id="user-reservations">
 
 </div>
+
+<%# <script> 
+    document.getElementById("more-info").addEventListener("click", function(){ 
+    document.getElementById("user-reservations").innerText = "this is a test"; 
+}); 
+</script>  %>
+
 <br>
 
 <button id="user-reservations" onclick="getReservations()"> Show Your Reservations </button> 
 <br><br>
-<%# <a href="#" onclick="getReservations(); return false;"> Show The Reservations </a><br> %>
 
 <%# Create element on create reservation button %>
 <select id="equipment-select" name="equipment">
@@ -24,7 +33,6 @@
  
 <button id="reservation-form-button" onclick="displayReservationForm(); return false;"> Create a New Reservation </button>
 <br><br>
-<%# <a href="#" onclick="displayReservationForm(); return false;"> Create A Reservation </a> %>
 
 <h4><%= link_to 'All Reservations', reservations_path unless !current_user.admin? %><br></h4>
 <h4><%= link_to 'Add Equipment', new_equipment_path unless !current_user.admin? %><br></h4>
