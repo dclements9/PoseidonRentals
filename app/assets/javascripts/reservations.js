@@ -1,6 +1,4 @@
-// window.onload = function(){
-//     getReservations();
-// };
+
 function getReservations(){
     let reservationsDiv = document.getElementById('user-reservations');
     fetch('http://localhost:3000/reservations.json')
@@ -37,13 +35,13 @@ class Reservation {
         // Converts Ruby Date Type to formatted string date.
         var dateParts = this.date.split('-');
         var formatDate = new Date (dateParts[0], (dateParts[1] - 1), dateParts[2])
-        
+
         //Converts Ruby Date (Time) Type to formatted string time.
         
-        var formatStart_time = (new Date(this.start_time)).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        var formatStart_time = (new Date(this.start_time)).toLocaleString("en-US", {timeZone: "UTC", hour: '2-digit', minute:'2-digit'})
 
-        var formatEnd_time = (new Date(this.end_time)).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-        
+        var formatEnd_time = (new Date(this.end_time)).toLocaleString("en-US", {timeZone: "UTC", hour: '2-digit', minute:'2-digit'})
+
         var thisReservation = this
         
         // TODO: href onClick is getting automatically clicked
@@ -58,12 +56,12 @@ class Reservation {
         let reservations = (`
             <div>
             <h3> ${formatDate.toDateString()}</h3>
-            <p> ${formatStart_time} to ${formatEnd_time}</p>`
+            <p> ${formatStart_time} to ${formatEnd_time}</p>
            
-            + "<button onclick= "testShowMoreInfo(${thisReservation})" >Show More Info</button>"
+            <button onclick= "testShowMoreInfo(${thisReservation})" >Show More Info</button>
 
-        + '</div>'
-        )
+        </div>
+        `)
         
         return reservations
     }
@@ -99,6 +97,7 @@ function testShowMoreInfo(reservation){
 }
 
 function displayReservationForm(){
+    document.getElementById("equipment-select").style.display = "";
     displayEquipmentDropDown()
 
     let reservationForm = document.getElementById('reservation-form');
@@ -173,7 +172,7 @@ function createReservation(){
     .then(reservation => {
         var objReservation = new Reservation(reservation)
         objReservation.equipment_id = reservation.equipment.id
-        debugger;
+        
         objReservation.displayReservation()
     })
 
