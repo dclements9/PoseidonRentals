@@ -27,24 +27,24 @@ class Reservation {
     }
 
     displayReservation(){
-        //TODO: proper converstion of timezone for displaying time.
+        // gets cookie and filters for current user id.
 
-        // If this.user_id == session[:user_id] - Access @user or session hash
-        // --- Should this happen in controller? For security API validations
-
+        var current_user = document.cookie.replace(/(?:(?:^|.*;\s*)user_id\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+        
+        if (this.user_id == current_user) {
+        debugger;
         // Converts Ruby Date Type to formatted string date.
         var dateParts = this.date.split('-');
         var formatDate = new Date (dateParts[0], (dateParts[1] - 1), dateParts[2])
 
-        //Converts Ruby Date (Time) Type to formatted string time.
+        //Converts Ruby Date (Time) Type to formatted string time with timezone conversion support.
         
         var formatStart_time = (new Date(this.start_time)).toLocaleString("en-US", {timeZone: "UTC", hour: '2-digit', minute:'2-digit'})
 
         var formatEnd_time = (new Date(this.end_time)).toLocaleString("en-US", {timeZone: "UTC", hour: '2-digit', minute:'2-digit'})
 
         var thisReservation = this
-        
-        // TODO: href onClick is getting automatically clicked
+
         // return(`
         // <div>
         //     <h3> ${formatDate.toDateString()}</h3>
@@ -64,6 +64,9 @@ class Reservation {
         `)
         
         return reservations
+        }else{
+            return ""
+        }
     }
 
     showMoreInfo(){
@@ -94,6 +97,22 @@ function testShowMoreInfo(reservation){
 
     reservationInfoDiv.innerHTML = "This is a test."
 
+}
+
+function getCurrentUser(){
+    
+    return function(current_user){
+        let url = window.location.href + ".json"
+
+        fetch(url)
+        .then(resp => resp.json())
+        .then(info => {
+           
+             current_user = info.id;
+          
+        })
+        
+    }
 }
 
 function displayReservationForm(){

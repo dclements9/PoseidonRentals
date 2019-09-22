@@ -18,7 +18,12 @@ class UsersController < ApplicationController
     def show
         if logged_in?
             find_user
+            cookies[:user_id] = @user.id
             @sorted_reservations = Reservation.sort_reservation(@user.reservations)
+            respond_to do |format|
+                format.html
+                format.json {render json: @user}
+            end
         else
             redirect_to root_path
         end
