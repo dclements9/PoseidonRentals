@@ -11,6 +11,7 @@ class EquipmentController < ApplicationController
     end
 
     def show
+        cookies[:equipment_id] = @equipment.id
         respond_to do |format|
             format.html
             format.json {render json: @equipment}

@@ -6,12 +6,10 @@ function getEquipmentReservations(){
     fetch(url)
     .then(resp => resp.json())
     .then(info => {
-        debugger;
         info.reservations.forEach(function(reservation){
-            var objReservation = new Reservation(reservation);
+            var objReservation = new Reservation(reservation); 
+            objReservation.equipment_id = document.cookie.replace(/(?:(?:^|.*;\s*)equipment_id\s*\=\s*([^;]*).*$)|^.*$/, "$1")
             reservationsDiv.innerHTML += objReservation.displayReservation();
-            
-            // TODO: Fix - Displays Non Working ShowMoreInfo link
         })
     })
 }

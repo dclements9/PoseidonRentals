@@ -1,5 +1,11 @@
 
+function getReservationsButtonClick(event){
+    console.log("Made it this far.")
+    event.stopPropagation();
+    debugger;
+}
 function getReservations(){
+    
     let reservationsDiv = document.getElementById('user-reservations');
     fetch('http://localhost:3000/reservations.json')
     .then(resp => resp.json())
@@ -9,7 +15,7 @@ function getReservations(){
         for (var i = 0, len = reservations.length; i < len; ++i) {
             
             var objReservation = new Reservation(reservations[i]);
-            reservationsDiv.innerHTML += objReservation.displayReservation();
+            reservationsDiv.innerHTML += objReservation.displayReservation('user_reservations');
         }
     })
 }
@@ -26,13 +32,19 @@ class Reservation {
         
     }
 
-    displayReservation(){
-        // gets cookie and filters for current user id.
-
+    displayReservation(option){
+        // gets cookie and filters for current user id & current equipment id.
         var current_user = document.cookie.replace(/(?:(?:^|.*;\s*)user_id\s*\=\s*([^;]*).*$)|^.*$/, "$1")
-        
-        if (this.user_id == current_user) {
-        debugger;
+        var current_equipment = document.cookie.replace(/(?:(?:^|.*;\s*)equipment_id\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+
+        if (option == 'user_reservations'){
+            var comparison = this.user_id == current_user
+        } else {
+            var comparison = this.equipment_id == current_equipment
+            
+        }
+
+        if (comparison) {
         // Converts Ruby Date Type to formatted string date.
         var dateParts = this.date.split('-');
         var formatDate = new Date (dateParts[0], (dateParts[1] - 1), dateParts[2])
@@ -44,22 +56,18 @@ class Reservation {
         var formatEnd_time = (new Date(this.end_time)).toLocaleString("en-US", {timeZone: "UTC", hour: '2-digit', minute:'2-digit'})
 
         var thisReservation = this
+        
+        let moreInfo = this.showMoreInfo
+        
+//<a onclick= (${moreInfo()})>
+//<a href="#" onclick= "${moreInfo}"> More Info Link</a>
 
-        // return(`
-        // <div>
-        //     <h3> ${formatDate.toDateString()}</h3>
-        //     <p> ${formatStart_time} to ${formatEnd_time}</p>
-            
-        //     <button onclick="testShowMoreInfo(${thisReservation})">Show More Info</button>
-        //     </div>
-        // `)
         let reservations = (`
+        
             <div>
             <h3> ${formatDate.toDateString()}</h3>
             <p> ${formatStart_time} to ${formatEnd_time}</p>
-           
-            <button onclick= "testShowMoreInfo(${thisReservation})" >Show More Info</button>
-
+            <a href="#" onclick=> More Info Link</a>
         </div>
         `)
         
@@ -70,7 +78,7 @@ class Reservation {
     }
 
     showMoreInfo(){
-        debugger;
+        
         let reservationInfoDiv = document.getElementById('user-reservations')
         let url = 'http://localhost:3000/reservations/' + this.id + '.json'
 
@@ -90,8 +98,12 @@ class Reservation {
         })
     }
 }
+
+
+
 // Just a test
 function testShowMoreInfo(reservation){
+    console.log("to function")
     debugger;
     let reservationInfoDiv = document.getElementById('user-reservations')
 
