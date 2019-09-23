@@ -1,18 +1,13 @@
-<h1>Name:    <%= @equipment.name %><br></h1>
-
-<h3> Category:<%= @equipment.category %><br> </h3>
-
-<h3> Cost:    <%= number_to_currency(@equipment.cost) %>/hr<br> </h3>
-
-<h3> Available: <%= @equipment.available ? "Yes" : "No" %><br> </h3>
+<div id="equipment-div">
+</div>
 
 <br><br>
 
 <%# Shows equipment's reservations %>
-<div id="equipment-reservations">
+<%# <div id="equipment-reservations">
 </div>
 <br>
-<button id="equipment-reservations-button" onclick="getEquipmentReservations()"> All Reservations for this Equipment </button> 
+<button id="equipment-reservations-button" onclick="getEquipmentReservations()"> All Reservations for this Equipment </button>  %>
 
 <br><br>
 
@@ -28,5 +23,7 @@
 
 <h4> <%= link_to 'Back to All Equipment', equipment_index_path %><br></h4>
 
-
+<script>
+getEquipment();
+</script>
 

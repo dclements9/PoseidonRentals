@@ -1,21 +1,13 @@
 
-function getReservationsButtonClick(event){
-    console.log("Made it this far.")
-    event.stopPropagation();
-    debugger;
-}
-function getReservations(){
-    
+function getReservations(){  
     let reservationsDiv = document.getElementById('user-reservations');
     fetch('http://localhost:3000/reservations.json')
     .then(resp => resp.json())
     .then(reservations => {
         reservationsDiv.innerHTML = '';
-
         for (var i = 0, len = reservations.length; i < len; ++i) {
-            
             var objReservation = new Reservation(reservations[i]);
-            reservationsDiv.innerHTML += objReservation.displayReservation('user_reservations');
+            reservationsDiv.innerHTML += objReservation.displayReservation('user_reservations');                  
         }
     })
 }
@@ -54,76 +46,22 @@ class Reservation {
         var formatStart_time = (new Date(this.start_time)).toLocaleString("en-US", {timeZone: "UTC", hour: '2-digit', minute:'2-digit'})
 
         var formatEnd_time = (new Date(this.end_time)).toLocaleString("en-US", {timeZone: "UTC", hour: '2-digit', minute:'2-digit'})
-
-        var thisReservation = this
         
-        let moreInfo = this.showMoreInfo
+        var equipment = this.equipment.name
+        var cost = parseFloat(this.equipment.cost)
         
-//<a onclick= (${moreInfo()})>
-//<a href="#" onclick= "${moreInfo}"> More Info Link</a>
-
         let reservations = (`
-        
             <div>
             <h3> ${formatDate.toDateString()}</h3>
-            <p> ${formatStart_time} to ${formatEnd_time}</p>
-            <a href="#" onclick=> More Info Link</a>
+            <h3> ${equipment} </h3>
+            <p> ${formatStart_time} to ${formatEnd_time}</p> 
+            <p> $${cost.toFixed(2)} </p>
         </div>
         `)
-        
         return reservations
         }else{
             return ""
         }
-    }
-
-    showMoreInfo(){
-        
-        let reservationInfoDiv = document.getElementById('user-reservations')
-        let url = 'http://localhost:3000/reservations/' + this.id + '.json'
-
-        fetch(url)
-        .then(resp => resp.json())
-        .then(info => {
-        let reservationInfo = `
-            <h1>Your Reservation for ${info.date}: </h1>
-            
-            <h2> Equipment: ${info.equipment.name} </h2>
-            <h3> Cost: ${info.equipment.cost} </h3>
-
-            <p>Pickup Time: </p>
-            <p>Return Time: </p>
-            `
-            reservationInfoDiv.innerHTML = reservationInfo
-        })
-    }
-}
-
-
-
-// Just a test
-function testShowMoreInfo(reservation){
-    console.log("to function")
-    debugger;
-    let reservationInfoDiv = document.getElementById('user-reservations')
-
-    reservationInfoDiv.innerHTML = "This is a test."
-
-}
-
-function getCurrentUser(){
-    
-    return function(current_user){
-        let url = window.location.href + ".json"
-
-        fetch(url)
-        .then(resp => resp.json())
-        .then(info => {
-           
-             current_user = info.id;
-          
-        })
-        
     }
 }
 
@@ -183,8 +121,7 @@ function displayEquipmentDropDown(){
   });
 }
 
-function createReservation(){
-    
+function createReservation(){  
     const reservation = {
         equipment_id: document.getElementById('equipment-select').value,
         date: document.getElementById('date').value,
@@ -206,5 +143,4 @@ function createReservation(){
         
         objReservation.displayReservation()
     })
-
 }
