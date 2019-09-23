@@ -29,13 +29,3 @@ function getEquipmentReservations(){
         })
     })
 }
-
-
-class Equipment{
-    constructor(equipment){
-        this.name = equipment.id
-        this.category = equipment.category
-        this.available = equipment.available
-        this.cost = equipment.cost
-    }
-}

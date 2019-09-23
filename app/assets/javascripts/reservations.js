@@ -147,7 +147,7 @@ function createReservation(){
     .then(reservation => {
         var objReservation = new Reservation(reservation)
         objReservation.equipment_id = reservation.equipment.id
-        
-        objReservation.displayReservation()
+
+        getReservations()
     })
 }
