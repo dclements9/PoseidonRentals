@@ -128,6 +128,13 @@ function displayEquipmentDropDown(){
   });
 }
 
+function clearForm(){
+    let reservationForm = document.getElementById('reservation-form');
+    reservationForm.innerHTML = ''
+    document.getElementById("equipment-select").style.display = "none";
+    
+}
+
 function createReservation(){  
     const reservation = {
         equipment_id: document.getElementById('equipment-select').value,
@@ -148,6 +155,8 @@ function createReservation(){
         var objReservation = new Reservation(reservation)
         objReservation.equipment_id = reservation.equipment.id
 
+        
         getReservations()
+        clearForm()
     })
 }
