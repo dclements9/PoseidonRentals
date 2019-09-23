@@ -12,6 +12,8 @@ class EquipmentController < ApplicationController
 
     def show
         cookies[:equipment_id] = @equipment.id
+        cookies[:equipment_name] = @equipment.name
+        cookies[:equipment_cost] = @equipment.cost
         respond_to do |format|
             format.html
             format.json {render json: @equipment}

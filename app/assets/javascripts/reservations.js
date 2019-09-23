@@ -47,13 +47,20 @@ class Reservation {
 
         var formatEnd_time = (new Date(this.end_time)).toLocaleString("en-US", {timeZone: "UTC", hour: '2-digit', minute:'2-digit'})
         
-        var equipment = this.equipment.name
-        var cost = parseFloat(this.equipment.cost)
+            
+        if (typeof this.equipment !== "undefined"){
+            var equipment_name = this.equipment.name
+            var cost = parseFloat(this.equipment.cost)
+        }else{
+            var equipment_name = document.cookie.replace(/(?:(?:^|.*;\s*)equipment_name\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+            var cost = parseFloat(document.cookie.replace(/(?:(?:^|.*;\s*)equipment_cost\s*\=\s*([^;]*).*$)|^.*$/, "$1"))
+        }
+        
         
         let reservations = (`
             <div>
             <h3> ${formatDate.toDateString()}</h3>
-            <h3> ${equipment} </h3>
+            <h3> ${equipment_name} </h3>
             <p> ${formatStart_time} to ${formatEnd_time}</p> 
             <p> $${cost.toFixed(2)} </p>
         </div>

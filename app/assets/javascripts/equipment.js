@@ -6,7 +6,7 @@ function getEquipment(){
     .then(resp => resp.json())
     .then(equipment => {
         let cost = parseFloat(equipment.cost)
-
+        
         equipmentDiv.innerHTML += `<h1>${equipment.name}<br></h1>`
         equipmentDiv.innerHTML += `<h3>Category: ${equipment.category}<br> </h3>`
         equipmentDiv.innerHTML += `<h3>Cost: $${cost.toFixed(2)}<br> </h3>`
