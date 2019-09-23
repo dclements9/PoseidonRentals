@@ -1,7 +1,7 @@
 
 function getReservations(){  
     let reservationsDiv = document.getElementById('user-reservations');
-    fetch('http://localhost:3000/reservations.json')
+    fetch('https://localhost:3000/reservations.json')
     .then(resp => resp.json())
     .then(reservations => {
         reservationsDiv.innerHTML = '';
@@ -88,7 +88,7 @@ function displayReservationForm(){
         <label> End Time: </label>
         <input id="end_time" type="time">
         <br><br>
-        <input type="submit" value="Create Reservation">
+        <input type="submit" value="Submit">
         </form>
         <br><br>
     `
@@ -106,7 +106,7 @@ function displayEquipmentDropDown(){
     
     dropdown.selectedIndex = 0;
     
-    const url = 'http://localhost:3000/equipment.json';
+    const url = 'https://localhost:3000/equipment.json';
 
     fetch(url)  
     .then(  
@@ -143,7 +143,7 @@ function createReservation(){
         end_time: document.getElementById('end_time').value
     }
     
-    fetch("http://localhost:3000/reservations", {
+    fetch("https://localhost:3000/reservations", {
         method: 'POST',
         headers:{
             'Content-Type': 'application/json',
