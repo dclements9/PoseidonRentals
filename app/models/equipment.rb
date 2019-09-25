@@ -1,7 +1,7 @@
 class Equipment < ApplicationRecord
     has_many :reservations
     has_many :users, through: :reservations
-    validates :name, :category, :available, :cost, presence: true
+    validates :name, :category, :cost, presence: true
 
     scope :available, -> { where(available: true) }
 
