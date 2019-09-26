@@ -23,7 +23,7 @@ function getEquipmentReservations(){
     .then(resp => resp.json())
     .then(info => {
         info.reservations.forEach(function(reservation){
-            var objReservation = new Reservation(reservation); 
+            let objReservation = new Reservation(reservation); 
             objReservation.equipment_id = document.cookie.replace(/(?:(?:^|.*;\s*)equipment_id\s*\=\s*([^;]*).*$)|^.*$/, "$1")            
             reservationsDiv.innerHTML += objReservation.displayReservation();
         })

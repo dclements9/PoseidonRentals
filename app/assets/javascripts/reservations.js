@@ -5,8 +5,8 @@ function getReservations(){
     .then(resp => resp.json())
     .then(reservations => {
         reservationsDiv.innerHTML = '';
-        for (var i = 0, len = reservations.length; i < len; ++i) {
-            var objReservation = new Reservation(reservations[i]);
+        for (let i = 0, len = reservations.length; i < len; ++i) {
+            const objReservation = new Reservation(reservations[i]);
             reservationsDiv.innerHTML += objReservation.displayReservation('user_reservations');                  
         }
     })
@@ -26,34 +26,37 @@ class Reservation {
 
     displayReservation(option){
         // gets cookie and filters for current user id & current equipment id.
-        var current_user = document.cookie.replace(/(?:(?:^|.*;\s*)user_id\s*\=\s*([^;]*).*$)|^.*$/, "$1")
-        var current_equipment = document.cookie.replace(/(?:(?:^|.*;\s*)equipment_id\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+        let current_user = document.cookie.replace(/(?:(?:^|.*;\s*)user_id\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+        let current_equipment = document.cookie.replace(/(?:(?:^|.*;\s*)equipment_id\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+        let comparison
+        let equipment_name
+        let cost
 
         if (option == 'user_reservations'){
-            var comparison = this.user_id == current_user
+            comparison = this.user_id == current_user
         } else {
-            var comparison = this.equipment_id == current_equipment
+            comparison = this.equipment_id == current_equipment
             
         }
 
         if (comparison) {
         // Converts Ruby Date Type to formatted string date.
-        var dateParts = this.date.split('-');
-        var formatDate = new Date (dateParts[0], (dateParts[1] - 1), dateParts[2])
+        let dateParts = this.date.split('-');
+        let formatDate = new Date (dateParts[0], (dateParts[1] - 1), dateParts[2])
 
         //Converts Ruby Date (Time) Type to formatted string time with timezone conversion support.
         
-        var formatStart_time = (new Date(this.start_time)).toLocaleString("en-US", {timeZone: "UTC", hour: '2-digit', minute:'2-digit'})
+        let formatStart_time = (new Date(this.start_time)).toLocaleString("en-US", {timeZone: "UTC", hour: '2-digit', minute:'2-digit'})
 
-        var formatEnd_time = (new Date(this.end_time)).toLocaleString("en-US", {timeZone: "UTC", hour: '2-digit', minute:'2-digit'})
+        let formatEnd_time = (new Date(this.end_time)).toLocaleString("en-US", {timeZone: "UTC", hour: '2-digit', minute:'2-digit'})
         
             
         if (typeof this.equipment !== "undefined"){
-            var equipment_name = this.equipment.name
-            var cost = parseFloat(this.equipment.cost)
+            equipment_name = this.equipment.name
+            cost = parseFloat(this.equipment.cost)
         }else{
-            var equipment_name = document.cookie.replace(/(?:(?:^|.*;\s*)equipment_name\s*\=\s*([^;]*).*$)|^.*$/, "$1")
-            var cost = parseFloat(document.cookie.replace(/(?:(?:^|.*;\s*)equipment_cost\s*\=\s*([^;]*).*$)|^.*$/, "$1"))
+            equipment_name = document.cookie.replace(/(?:(?:^|.*;\s*)equipment_name\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+            cost = parseFloat(document.cookie.replace(/(?:(?:^|.*;\s*)equipment_cost\s*\=\s*([^;]*).*$)|^.*$/, "$1"))
         }
         
         let showReservation = "https://localhost:3000/reservations/" + this.id 
@@ -153,12 +156,16 @@ function createReservation(){
         },
         body: JSON.stringify({reservation})
     }).then(resp => resp.json())
-    .then(reservation => {
-        var objReservation = new Reservation(reservation)
+    .then(reservation => {       
+        if (reservation.errors){
+            alert("CANNOT BE PAST DATE")
+        }else{
+            console.log(reservation)
+        let objReservation = new Reservation(reservation)
         objReservation.equipment_id = reservation.equipment.id
 
         
         getReservations()
         clearForm()
-    })
+    }})
 }
