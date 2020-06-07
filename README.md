@@ -7,7 +7,7 @@ A user is then able to reserve equipment for a date & time. A user can also edit
 Admins are able to add, edit, and delete equipment.
 
 ## Installation
-**Ruby 2.6.2 is required.**
+**Ruby 2.7.1 is required.**
 
 To get started, run the following commands:
 ```ruby
