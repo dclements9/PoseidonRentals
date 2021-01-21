@@ -27,9 +27,14 @@ Sample data includes:
     2. 1 User Object (email: testing@testing.com password: testing)
     3. 1 User Admin Object (email: admin@admin.com password: admin)
     4. 1 Reservation object for Admin & Boat
-```ruby
+<!-- ```ruby
 thin start --ssl
+``` -->
+
+```ruby
+rails s
 ```
+
 Navigate to https://localhost:3000 in a web browser.
 
 ## Notes on Admin Users
