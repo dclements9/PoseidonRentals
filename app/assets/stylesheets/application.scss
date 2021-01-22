@@ -16,10 +16,10 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Sail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
 
 body {
-  font-family: 'Sail', roboto;
+  font-family: 'Cinzel Decorative', roboto;
   padding-top: 70px;
   padding-bottom: 30px;
   display: inline-block;
@@ -35,7 +35,7 @@ body {
     background-size: cover;
     height:100%;
     width:100%; 
-    color:#000000;
+    color:#084371;
 }
 
 .theme-dropdown .dropdown-menu {
@@ -74,3 +74,14 @@ body {
 // .menu-container {
 //   width: 1875px;
 // }
+
+a {
+  color: #4b7bec;
+  text-shadow: 0px 10px 15px #fdfd96;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #fdfd96;
+  text-shadow: 0px 10px 15px #4b7bec;
+}
