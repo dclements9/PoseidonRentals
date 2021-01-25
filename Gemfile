@@ -7,6 +7,8 @@ gem 'active_model_serializers'
 # bootstrap
 # gem 'bootstrap-sass'
 gem 'bootstrap', '~> 5.0.0.beta1'
+# jquery-rails for bootstrap 5
+gem 'jquery-rails'
 # Omniauth
 gem 'omniauth'
 gem 'omniauth-github'
