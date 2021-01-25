@@ -5,7 +5,8 @@ ruby '2.7.1'
 
 gem 'active_model_serializers'
 # bootstrap
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
+gem 'bootstrap', '~> 5.0.0.beta1'
 # Omniauth
 gem 'omniauth'
 gem 'omniauth-github'
