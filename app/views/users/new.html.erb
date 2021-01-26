@@ -1,6 +1,6 @@
 <%= render partial: "layouts/error_messages", locals: {object: @user} %>
 
-<h1>Create a New User: </h1><br>
+<h1>Signup: </h1><br>
 
 <%= form_for(@user) do |u| %>
 
@@ -10,5 +10,5 @@
     <h4>Confirm Password: <%= u.password_field :password_confirmation %> <br><br></h4>
     <br><br>
 
-    <h4><%= u.submit 'Submit' %></h4>
-<% end %>
+    <button class="btn btn-primary" type="submit" name="commit" value="Submit" data-disable-with="Submit">Submit</button>
+<% end %> 
