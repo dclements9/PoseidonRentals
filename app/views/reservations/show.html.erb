@@ -6,8 +6,12 @@
 
 Pickup Time: <%= reservation_start(@reservation) %><br>
 Return Time: <%= reservation_end(@reservation) %>
+<br><br><br>
+
+<%# <%= link_to 'Delete Reservation', reservation_path(@reservation), method: :delete, data: { confirm: "Delete this Reservation?" } %> 
+
+
+<br>
+<a type="button" class="btn btn-warning"  href="<%=edit_reservation_path%>">Edit Reservation</a>
 <br><br>
-
-<%= link_to 'Edit Reservation', edit_reservation_path %><br>
-
-<%= link_to 'Delete Reservation', reservation_path(@reservation), method: :delete, data: { confirm: "Delete this Reservation?" } %>
+<a type="button" class="btn btn-danger"  href="<%=reservation_path(@reservation)%>" data-method="delete"%>>Delete Reservation</a>
