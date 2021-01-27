@@ -1,4 +1,4 @@
-<h1> Welcome to Poseidon Rentals <%= @user.name %>! </h1>
+<h1> Welcome to Poseidon Rentals, <%= @user.name %> </h1>
 <br><br><br>
 
 
@@ -9,7 +9,8 @@
 </div>
 <br>
 
-<button id="user-reservations" onclick="getReservations();"> Show Your Reservations </button> 
+<button type="button" class="btn btn-info" id="user-reservations" onclick="getReservations();"> Show Your Reservations </button>
+
 
 <br><br>
 
@@ -19,10 +20,12 @@
 <div id="reservation-form">
 </div>
  
-<button id="reservation-form-button" onclick="displayReservationForm(); return false;"> Create a New Reservation </button>
+<button type="button" class="btn btn-primary" id="reservation-form-button" onclick="displayReservationForm(); return false;"> Create a New Reservation </button>
 <br><br>
 
+<%# Need to edit below admin links %>
 <h4><%= link_to 'All Reservations', reservations_path unless !current_user.admin? %><br></h4>
 <h4><%= link_to 'Add Equipment', new_equipment_path unless !current_user.admin? %><br></h4>
-<h4><%= link_to 'Log Out', logout_path, method: :delete %></h4>
+
+<a type="button" class="btn btn-danger" data-method="delete" href="/logout">Logout</a>
 
