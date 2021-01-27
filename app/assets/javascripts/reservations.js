@@ -67,7 +67,7 @@ class Reservation {
             <h3> ${equipment_name} </h3>
             <p> ${formatStart_time} to ${formatEnd_time}</p> 
             <p> $${cost.toFixed(2)} </p>
-            <a href="${showReservation}"> Show More Info</a>
+            <a type="button" class="btn btn-info" href="${showReservation}"> Show More Info</a>
         </div>
         `)
         return reservations
