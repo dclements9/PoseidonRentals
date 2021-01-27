@@ -35,7 +35,7 @@ thin start --ssl
 rails s
 ```
 
-Navigate to https://localhost:3000 in a web browser.
+Navigate to http://localhost:3000 in a web browser.
 
 ## Notes on Admin Users
 

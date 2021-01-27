@@ -1,7 +1,7 @@
 
 function getReservations(){  
     let reservationsDiv = document.getElementById('user-reservations');
-    fetch('https://localhost:3000/reservations.json')
+    fetch('http://localhost:3000/reservations.json')
     .then(resp => resp.json())
     .then(reservations => {
         reservationsDiv.innerHTML = '';
@@ -59,7 +59,7 @@ class Reservation {
             cost = parseFloat(document.cookie.replace(/(?:(?:^|.*;\s*)equipment_cost\s*\=\s*([^;]*).*$)|^.*$/, "$1"))
         }
         
-        let showReservation = "https://localhost:3000/reservations/" + this.id 
+        let showReservation = "http://localhost:3000/reservations/" + this.id 
         
         let reservations = (`
             <div>
@@ -111,7 +111,7 @@ function displayEquipmentDropDown(){
     
     dropdown.selectedIndex = 0;
     
-    const url = 'https://localhost:3000/equipment.json';
+    const url = 'http://localhost:3000/equipment.json';
 
     fetch(url)  
     .then(  
@@ -148,7 +148,7 @@ function createReservation(){
         end_time: document.getElementById('end_time').value
     }
     
-    fetch("https://localhost:3000/reservations", {
+    fetch("http://localhost:3000/reservations", {
         method: 'POST',
         headers:{
             'Content-Type': 'application/json',
