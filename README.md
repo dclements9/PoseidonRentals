@@ -67,3 +67,4 @@ Everyone interacting in the Poseidon Rentals project’s codebases, issue tracke
 - Can access /reservations without being logged in
 - edit show - admin links
 - Delete reservation confirmation
+- Dropdown menus style
