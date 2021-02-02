@@ -1,39 +1,23 @@
 <%= form_for(reservation) do |r| %>
 
-Select from Available Equipment: <%= collection_select(:equipment, :id, Equipment.available, :id, :name_cost, include_blank: 'Select Equipment')%><br>
-
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-    Select Equipment
-  </button>
-  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-    <li><a class="dropdown-item active" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
-  </ul>
+<div class="center">
+<%= collection_select(:equipment, :id, Equipment.available, :id, :name_cost, {include_blank: 'Select from Available Equipment'}, { class: "btn btn-secondary dropdown-toggle"})%>
+<br><br><br>
+<div class="input-group mb-3 center">
+ <span class="input-group-text" id="basic-addon3">Date:</span>
+<%= r.date_field :date, { class: "btn btn-secondary"} %><br>
+</div>
+<div class="input-group mb-3 center">
+ <span class="input-group-text" id="basic-addon3">Start Time:</span>
+ <%= r.time_field :start_time, { class: "btn btn-secondary"} %><br>
+</div>
+<div class="input-group mb-3 center">
+ <span class="input-group-text" id="basic-addon3">Return Time:</span>
+ <%= r.time_field :end_time, { class: "btn btn-secondary"} %>
 </div>
 
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown button
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-  </ul>
-</div>
-
-
-
-<br><br>
-Date: <%= r.date_field :date %><br>
-Start Time: <%= r.time_field :start_time %><br>
-Return Time: <%= r.time_field :end_time %>
-<br><br><br><br>
-
-    <%# <%= r.submit 'Submit' %>
-      <button class="btn btn-primary" type="submit" name="commit" value="Submit" data-disable-with="Submit">Submit</button>
+<br><br><br>
+  <button class="btn btn-primary" type="submit" name="commit" value="Submit" data-disable-with="Submit">Submit</button>
 <% end %>
+
+</div>
