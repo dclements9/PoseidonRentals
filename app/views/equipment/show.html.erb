@@ -19,13 +19,9 @@
 <% end %>
 
 <br><br><br><br>
-<%# Need admin & confirmation %>
 
-<%# <h4> <%= link_to 'Edit Equipment', edit_equipment_path unless !current_user.admin? %>
-<a type="button" class="btn btn-warning"  href="<%=edit_equipment_path%>">Edit Equipment</a>
-<%# <h4> <%= link_to 'Delete Equipment', equipment_path(@equipment), method: :delete, data: { confirm: "Delete #{@equipment.name}" } unless !current_user.admin? %>
-<a type="button" class="btn btn-danger"  href="<%=equipment_path(@equipment)%>" data-method="delete"%>Delete Equipment</a>
-
+<h4> <%= link_to 'Edit Equipment', edit_equipment_path, class: "btn btn-warning" unless !current_user.admin? %>
+<h4> <%= link_to 'Delete Equipment', equipment_path(@equipment), method: :delete, data: { confirm: "Delete #{@equipment.name}" }, class: "btn btn-danger" unless !current_user.admin? %>
 <br><br>
 
 <a type="button" class="btn btn-info" href="/equipment">Back to All Equipment</a>
