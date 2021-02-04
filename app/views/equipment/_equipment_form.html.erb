@@ -1,14 +1,28 @@
 <%= form_for(equipment) do |e| %>
-    Name: <%= e.text_field :name %><br><br>
-    Category: <%= e.text_field :category %><br><br>
-
-    Available: <%= e.check_box :available %><br><br>
-    Cost: <%= e.number_field :cost %>/hr<br><br><br>
-    
+<div class="center">
+    <div class="input-group mb-2 center">
+        <span class="input-group-text" id="basic-addon3">Name:</span>
+        <%= e.text_field :name, {class: "form-control"} %><br><br>
+    </div>
+    <div class="input-group mb-2 center">
+        <span class="input-group-text" id="basic-addon3">Category:</span>
+        <%= e.text_field :category, {class: "form-control"} %><br><br>
+    </div>
+    <div class="input-group input-group-sm mb-3 center">
+        <span class="input-group-text fs-7" id="basic-addon3">Available:</span>
+        <%= e.check_box :available, {class: "form-check-input"} %><br><br>
+    </div>
+    <div class="input-group mb-2 center">
+        <span class="input-group-text" id="basic-addon3">Cost:</span>
+        <%= e.number_field :cost, {class: "form-control"} %>
+        <span class="input-group-text">/hr</span><br><br><br>
+    </div>
+    <br>
     <%= e.submit 'Submit', {class: "btn btn-primary"} %><br><br>
 <% end %>
+</div>
+<br><br>
 
-
-
-<%= link_to 'To All Equipment', equipment_index_path %><br>
-<%= link_to 'Home', root_path %>
+<%= link_to 'To All Equipment', equipment_index_path, class: "btn btn-primary" %><br>
+<br>
+<%= link_to 'Home', root_path, class: "btn btn-primary" %>
