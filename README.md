@@ -65,3 +65,4 @@ Everyone interacting in the Poseidon Rentals project’s codebases, issue tracke
 ## TODO
 
 - Can access /reservations without being logged in
+- Reservation Dropdown font
