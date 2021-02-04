@@ -23,9 +23,9 @@
 <button type="button" class="btn btn-primary" id="reservation-form-button" onclick="displayReservationForm(); return false;"> Create a New Reservation </button>
 <br><br>
 
-<%# Need to edit below admin links %>
-<h4><%= link_to 'All Reservations', reservations_path unless !current_user.admin? %><br></h4>
-<h4><%= link_to 'Add Equipment', new_equipment_path unless !current_user.admin? %><br></h4>
-
+<br><br><br><br>
+<h4><%= link_to 'All Reservations', reservations_path, class: "btn btn-info" unless !current_user.admin? %><br></h4>
+<h4><%= link_to 'Add Equipment', new_equipment_path, class: "btn btn-primary" unless !current_user.admin? %><br></h4>
+<br><br>
 <a type="button" class="btn btn-danger" data-method="delete" href="/logout">Logout</a>
 
