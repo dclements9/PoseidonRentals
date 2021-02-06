@@ -68,4 +68,5 @@ Everyone interacting in the Poseidon Rentals project’s codebases, issue tracke
 - Reservation Dropdown font
 - OAuth login
 - SSL
-- Font Color
+- User - Home -> Create Reservation styling
+- Possible div styling
