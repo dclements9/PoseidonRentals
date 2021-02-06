@@ -69,4 +69,3 @@ Everyone interacting in the Poseidon Rentals project’s codebases, issue tracke
 - OAuth login
 - SSL
 - User - Home -> Create Reservation styling
-- Possible div styling
