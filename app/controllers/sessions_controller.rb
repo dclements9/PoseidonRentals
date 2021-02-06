@@ -31,9 +31,10 @@ class SessionsController < ApplicationController
       u.email = oauth[:info][:email]
       u.password = SecureRandom.hex
     end
-    set_current_user
 
+    set_current_user
     redirect_to @user
+    
   end
 
   def destroy

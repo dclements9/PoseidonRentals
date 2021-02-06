@@ -5,7 +5,6 @@ class ReservationsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def new
-    
         if logged_in?
             find_user 
             @reservation = Reservation.new   
@@ -17,14 +16,10 @@ class ReservationsController < ApplicationController
 
     def create
         @reservation = Reservation.new(reservation_params)
-        @reservation.user = current_user
-        # @reservation.equipment = Equipment.find(params[:equipment][:id]) if !params[:equipment][:id].empty?
-        
+        @reservation.user = current_user        
         if @reservation.save
-            # redirect_to reservation_path(@reservation)
             render json: @reservation, status: 201
         else
-            # render :new
             render json: { errors: @reservation.errors.full_messages}, status: :bad_request
         end
     end
