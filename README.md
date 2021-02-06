@@ -66,6 +66,6 @@ Everyone interacting in the Poseidon Rentals project’s codebases, issue tracke
 
 - Can access /reservations without being logged in
 - Reservation Dropdown font
-- Signup form styling
 - OAuth login
 - SSL
+- Font Color
