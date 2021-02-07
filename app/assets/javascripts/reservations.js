@@ -60,7 +60,7 @@ class Reservation {
         }
         
         let showReservation = "http://localhost:3000/reservations/" + this.id 
-        
+// User Show Styling
         let reservations = (`
             <div>
             <h3> ${formatDate.toDateString()}</h3>
@@ -84,18 +84,23 @@ function displayReservationForm(){
     let reservationForm = document.getElementById('reservation-form');
     let form = `
         <form onsubmit="createReservation(); return false;">
-        <label> Date: </label>
-        <input id="date" type="date">
-        <br>
-        <label> Start Time: </label>
-        <input id="start_time" type="time">
-        <br>
-        <label> End Time: </label>
-        <input id="end_time" type="time">
-        <br><br>
-        <input type="submit" value="Submit">
-        </form>
-        <br><br>
+            <div class="center">
+            <div class="input-group mb-3 center">
+                <span class="input-group-text" id="basic-addon3">Date:</span>
+                <input id="date" type="date" class="btn btn-secondary">
+            </div>
+            <div class="input-group mb-3 center">
+                <span class="input-group-text" id="basic-addon3">Start Time:</span>
+                <input id="start_time" type="time" class="btn btn-secondary">
+            </div>
+            <div class="input-group mb-3 center">
+                <span class="input-group-text" id="basic-addon3">End Time:</span>
+                <input id="end_time" type="time" class="btn btn-secondary">
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary">
+            </form>
+        </div>
+        <br><br><br>
     `
     reservationForm.innerHTML = form;
 }
@@ -105,7 +110,7 @@ function displayEquipmentDropDown(){
     dropdown.length = 0;
 
     let defaultOption = document.createElement('option');
-    defaultOption.text = 'Choose Equipment';
+    defaultOption.text = 'Select from Available Equipment';
 
     dropdown.add(defaultOption);
     
