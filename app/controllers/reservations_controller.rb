@@ -43,17 +43,18 @@ class ReservationsController < ApplicationController
         redirect_to reservation_path(@reservation)
     end
 
-    def index
-        
-        if !params[:equipment_id].nil?
+    def index 
+        if !params[:equipment_id].nil? && logged_in?
             @equipment = Equipment.find(params[:equipment_id]) 
             @reservations = @equipment.reservations
-        else 
+        elsif logged_in?
             @reservations = Reservation.all
             respond_to do |format|
                 format.html
                 format.json {render json: @reservations}
             end
+        else
+            redirect_to root_path
         end
     end
 
