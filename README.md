@@ -64,6 +64,5 @@ Everyone interacting in the Poseidon Rentals project’s codebases, issue tracke
 
 ## TODO
 
-- Reservation Dropdown options font
 - OAuth login
 - SSL
