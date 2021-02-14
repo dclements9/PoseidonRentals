@@ -15,5 +15,10 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
-  post '/auth/:provider/callback', to: 'sessions#oauth_create'
+  # Omniauth route
+  # post '/auth/:provider/callback', to: 'sessions#oauth_create'
+  get '/auth/:provider/callback', to: 'sessions#oauth_create'
+  
+  # Test Google Oauth Route
+  get '/auth/google_oauth2/callback', to: 'sessions#google_oauth_create'
 end
