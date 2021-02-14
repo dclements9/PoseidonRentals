@@ -16,9 +16,6 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   # Omniauth route
-  # post '/auth/:provider/callback', to: 'sessions#oauth_create'
   get '/auth/:provider/callback', to: 'sessions#oauth_create'
   
-  # Test Google Oauth Route
-  get '/auth/google_oauth2/callback', to: 'sessions#google_oauth_create'
 end
