@@ -6,6 +6,8 @@
 
 # Mac OSX
 .DS_Store
+.crt
+.key
 
 # Ignore ENV
 .env
