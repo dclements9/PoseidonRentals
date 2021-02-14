@@ -64,5 +64,6 @@ Everyone interacting in the Poseidon Rentals project’s codebases, issue tracke
 
 ## TODO
 
-- OAuth login
-- SSL
+- Create Reservation error handling
+- Create Reservation - Start time - next line bug
+- CSS - specific color: white selectors
