@@ -12,10 +12,12 @@ gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'jquery-rails'
 # Omniauth
 gem 'omniauth'
-gem 'omniauth-rails_csrf_protection'
-gem 'omniauth-github'
 gem 'dotenv-rails'
 gem 'thin'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+#Omniauth CSRF Protection for vuln
+gem 'omniauth-rails_csrf_protection'
 # bcrypt
 gem 'bcrypt'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
