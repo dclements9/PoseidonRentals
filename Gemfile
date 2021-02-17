@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 
+gem 'font-awesome-sass', '~> 5.15.1'
 
 gem 'active_model_serializers'
 # bootstrap
