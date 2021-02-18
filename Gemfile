@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 
+gem 'font-awesome-sass', '~> 5.15.1'
+
 gem 'active_model_serializers'
 # bootstrap
 # gem 'bootstrap-sass'
@@ -11,13 +13,14 @@ gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'jquery-rails'
 # Omniauth
 gem 'omniauth'
-gem 'omniauth-github'
 gem 'dotenv-rails'
 gem 'thin'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+#Omniauth CSRF Protection for vuln
+gem 'omniauth-rails_csrf_protection'
 # bcrypt
 gem 'bcrypt'
-# Pry
-gem 'pry'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0', '>= 6.0.3.1'
 # Use sqlite3 as the database for Active Record
@@ -54,6 +57,8 @@ gem 'bootsnap', '~> 1.4', '>= 1.4.6', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Pry
+  gem 'pry'
 end
 
 group :development do

@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
+  # Omniauth route
   get '/auth/:provider/callback', to: 'sessions#oauth_create'
+  
 end
